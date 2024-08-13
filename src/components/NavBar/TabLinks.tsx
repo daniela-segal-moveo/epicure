@@ -1,5 +1,4 @@
 import {StyledTabContainer, StyledTabLink} from "./NavBar.styles"
-import useWindowWidth from "../../hooks/useWindowWidth"
 
 export const TabLinks = () => {
   return (

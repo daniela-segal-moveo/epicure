@@ -1,7 +1,5 @@
+import {StyledDefultPageContainer} from "./pages.styles"
 
 export const HomePage = () => {
-  return (
-    <div>
-    </div>
-  );
+  return <StyledDefultPageContainer></StyledDefultPageContainer>;
 };

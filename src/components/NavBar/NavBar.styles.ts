@@ -39,6 +39,12 @@ export const StyledTabContainer = styled.div`
 
   @media (max-width: 480px) {
     flex-direction: column;
+    margin-top: 46px;
+    height: 146px;
+    left: 18px;
+    padding: 0%;
+    gap: 40px;
+    opacity: 0px;
   }
 `;
 
@@ -94,21 +100,21 @@ export const StyledLogo = styled.img`
 
 export const StyledIcon = styled.img`
   display: flex;
-  width:  20px;
+  width: 20px;
   aspect-ratio: 1/1;
   cursor: pointer;
   top: 11px;
 `;
 
 export const StyledHamburger = styled.img`
-    display: flex;
-    width: 24px;
-    position: absolute;
-    left: 20px;
-    aspect-ratio: 1/1;
-    cursor: pointer;
-    top: 11px;
-  `;
+  display: flex;
+  width: 24px;
+  position: absolute;
+  left: 20px;
+  aspect-ratio: 1/1;
+  cursor: pointer;
+  top: 11px;
+`;
 
 export const StyledDrawerContainer = styled.div<{ open: boolean }>`
   position: fixed;
