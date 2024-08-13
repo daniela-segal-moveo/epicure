@@ -1,7 +1,7 @@
 import {
   StyledDrawerContainer,
   StyledOverlay,
-  StyledIcon,
+  StyledHamburger,
   StyledDivider,
   StyledTabWarper
 } from "../NavBar/NavBar.styles";
@@ -19,7 +19,7 @@ export const SideNavBarMenu = ({ open, setOpen }: NavBarProps) => {
   return (
     <>
       <StyledDrawerContainer open={open}>
-        <StyledIcon src = {CloseIcon} isHamburger onClick={() => setOpen(false)}></StyledIcon>
+        <StyledHamburger src = {CloseIcon} onClick={() => setOpen(false)}></StyledHamburger>
         <StyledTabWarper><TabLinks/></StyledTabWarper>
         <StyledDivider/>
       </StyledDrawerContainer>

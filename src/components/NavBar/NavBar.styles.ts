@@ -31,7 +31,7 @@ export const StyledIconsContainer = styled.div`
   }
 `;
 
-export const StyledTabContainer = styled.div<{ isDesktop?: boolean }>`
+export const StyledTabContainer = styled.div`
   display: flex;
   flex-direction: row;
   gap: 16px;
@@ -92,18 +92,23 @@ export const StyledLogo = styled.img`
   }
 `;
 
-export const StyledIcon = styled.img<{
-  isHamburger?: boolean;
-  isDesktop?: boolean;
-}>`
-  display: ${(props) => (props.isDesktop ? "none" : "flex")};
-  width: ${(props) => (props.isHamburger ? "24px" : "20px")};
-  position: ${(props) => (props.isHamburger ? "absolute" : "auto")};
-  left: ${(props) => (props.isHamburger ? "20px" : "")};
+export const StyledIcon = styled.img`
+  display: flex;
+  width:  20px;
   aspect-ratio: 1/1;
   cursor: pointer;
   top: 11px;
 `;
+
+export const StyledHamburger = styled.img`
+    display: flex;
+    width: 24px;
+    position: absolute;
+    left: 20px;
+    aspect-ratio: 1/1;
+    cursor: pointer;
+    top: 11px;
+  `;
 
 export const StyledDrawerContainer = styled.div<{ open: boolean }>`
   position: fixed;
