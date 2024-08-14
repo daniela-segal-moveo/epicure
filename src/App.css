@@ -3,7 +3,13 @@
   src: url("../src/asserts/fonts/Pigiarniq_Bold.ttf");
 } */
 
+html{
+  overflow-x: hidden;
+}
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Helvetica Neue';
   margin: 0px;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
 }
