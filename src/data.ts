@@ -29,6 +29,13 @@ export const epicureData = {
       {
         name: "M25",
         chef: "Oren Marmorstein",
+        isPopular: false,
+        stars: 3,
+        imgUrl: "https://s3-alpha-sig.figma.com/img/4654/5298/0e02e7f4dc70672d9f64d9fc217096b9?Expires=1724630400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=FT-JgSY5huzFwBoLIcd7XI1Kb-9DEDXJQm78XskzpMO2TCYPZRg1SSrIPc2333h4g9sMrffQnBM-onwru2WLwYRKPJV1MFb3SXIeUZNOQiplHGjsw6xqYn7MGbMlgkyGIyaOgOImoD5-CYaHqKq5ZjStPHW0awkNXV2eyT6vwOdEupJBkkUODOgNpk4BvxWkDqzPv0-I3vnSmnWrD6UCamf9u9W4wIkjGFrfQ64zeND2lqb15931AWkyhqLR19LHuYE03Ts0vQIATZTsAFPc4fGHzFh9FQmCy5DeXD9G5KKu7K5vua7zDRvn~6g~6wBKbtwcx47RYQyOdtFbHLMO0A__"
+      },
+      {
+        name: "KISU",
+        chef: "Daniela Segal",
         isPopular: true,
         stars: 3,
         imgUrl: "https://s3-alpha-sig.figma.com/img/4654/5298/0e02e7f4dc70672d9f64d9fc217096b9?Expires=1724630400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=FT-JgSY5huzFwBoLIcd7XI1Kb-9DEDXJQm78XskzpMO2TCYPZRg1SSrIPc2333h4g9sMrffQnBM-onwru2WLwYRKPJV1MFb3SXIeUZNOQiplHGjsw6xqYn7MGbMlgkyGIyaOgOImoD5-CYaHqKq5ZjStPHW0awkNXV2eyT6vwOdEupJBkkUODOgNpk4BvxWkDqzPv0-I3vnSmnWrD6UCamf9u9W4wIkjGFrfQ64zeND2lqb15931AWkyhqLR19LHuYE03Ts0vQIATZTsAFPc4fGHzFh9FQmCy5DeXD9G5KKu7K5vua7zDRvn~6g~6wBKbtwcx47RYQyOdtFbHLMO0A__"
