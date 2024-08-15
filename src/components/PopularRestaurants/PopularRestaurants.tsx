@@ -1,43 +1,18 @@
-import ArrowImg from "../../assets/icons/Arrow.svg";
-import { Navigation, Pagination, Scrollbar } from "swiper/modules";
-import { Card } from "../Card/Card";
-import { epicureData } from "../../data";
 import {
-  StyledSection,
-  StyledHeader,
-  StyledSwiperContainer,
-  StyledSwiper,
-  StyledSwiperSlide,
-  StyledAllRestaurantsDiv,
-  StyledAllRestaurantsP,
-  StyledIcon,
   StyledChefP,
 } from "./PopularRestaurants.styles";
+import {SpotlightSection} from "../SpotlightSection/SpotlightSection"
+import {StyledSwiperSlide} from "../SpotlightSection/SpotlightSection.styles"
 import { StarsRating } from "./StarsRating/StarsRating";
 import useWindowWidth from "../../hooks/useWindowWidth";
+import { Card } from "../Card/Card";
+import { epicureData } from "../../data";
 
-const SLIDES_PER_VIEW_DESKTPOP = 3;
-const SLIDES_PER_VIEW_MOBILE = 1.3;
 
 export const PopularRestaurants = () => {
   const isDesktop = useWindowWidth();
   return (
-    <StyledSection>
-      <StyledHeader>
-        {"popular restaurant in epicure:".toLocaleUpperCase()}
-      </StyledHeader>
-      <StyledSwiperContainer>
-        <StyledSwiper
-          modules={[Navigation, Pagination, Scrollbar]}
-          spaceBetween={30}
-          slidesPerView={
-            isDesktop ? SLIDES_PER_VIEW_DESKTPOP : SLIDES_PER_VIEW_MOBILE
-          }
-          loop={false}
-          navigation
-          pagination={{ clickable: true }}
-          scrollbar={{ draggable: true }}
-        >
+    <SpotlightSection mainHeader="popular restaurant in epicure:">
           {epicureData.restaurants
             .filter((restaurant) => restaurant.isPopular)
             .map((restaurant) => (
@@ -50,12 +25,6 @@ export const PopularRestaurants = () => {
                 </Card>
               </StyledSwiperSlide>
             ))}
-        </StyledSwiper>
-      </StyledSwiperContainer>
-      <StyledAllRestaurantsDiv>
-        <StyledAllRestaurantsP>All Restaurants</StyledAllRestaurantsP>
-        <StyledIcon src={ArrowImg}></StyledIcon>
-      </StyledAllRestaurantsDiv>
-    </StyledSection>
+            </SpotlightSection>
   );
 };
