@@ -1,6 +1,6 @@
-const epicureData = {
+export const epicureData = {
     hero: {
-      pictureUrl: "https://www.thefeedfeed.com/wp-content/uploads/2020/05/Epicure-Hero.jpg", // Example hero image
+      pictureUrl: "https://s3-alpha-sig.figma.com/img/3b9b/cb74/389e36d3bddc42756b7c09eceea01359?Expires=1724630400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=cT1zU17b5O5eA9vgbc997tlaHM52z7CTgEiAkqX7Zb8f0WQY3GLpdJ~isbp0SV8vVyMS10Rkd-znclKki58YHnMCAuJ9qiUs8XAnCNZv5A8Z1bBEudtrOgodeimpWtBuaHt4EA-2pEKgXmRbsGLSxBaAojU8BZEP2Tz-IaqYGHopJO745OqQhjfXjVxLOJT26LaF1P4bFAiLxO1NVqvCIPScGkQtyywiaCoqLW3VGVlcv-zyr~vhH6zKAldMF-wRY7N3m8~kiV4-qgixDk9T1sMEsmK5z76jSqZSjMNF2MA9oPEa~WnKhnB67GhY3WObAo47EwFTOybsPVHvVwfazg__", // Example hero image
       header: "Epicure works with the top chef restaurants in Tel Aviv",
       searchBarText: "Search for restaurant cuisine, chef"
     },
