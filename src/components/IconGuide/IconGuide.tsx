@@ -7,7 +7,6 @@ import {
   StyledIconWarper,
   StyledIconHeader,
   StyledIcon,
-  StyledSpicyIcon,
 } from "./IconGuide.styles";
 
 import vegImg from "../../assets/icons/vegan.svg";

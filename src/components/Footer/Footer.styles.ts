@@ -9,7 +9,7 @@ export const StyledFooterWarper = styled.div`
   height: 85px;
   justify-content: center;
 
-  @media (max-width: 480px) {
+  @media (max-width: 800px) {
     justify-content: flex-start;
     height: 202px;
   }
@@ -25,7 +25,7 @@ export const StyledFooterContainer = styled.div`
   gap: 40px;
   opacity: 0px;
 
-  @media (max-width: 480px) {
+  @media (max-width: 800px) {
     flex-direction: column;
     height: 146px;
     align-items: baseline;

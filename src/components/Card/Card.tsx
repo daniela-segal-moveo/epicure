@@ -2,7 +2,7 @@ import React from 'react';
 import {StyledCardContainer,StyledHeader,StyledImg, StyledContentContainer} from "./Card.styles"
 
 interface CardProps {
-  children: React.ReactNode; 
+  children: React.ReactNode | null; 
   imgSrc: string
   header: string
 }

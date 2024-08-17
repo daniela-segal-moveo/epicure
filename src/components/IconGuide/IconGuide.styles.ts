@@ -86,14 +86,6 @@ export const StyledIcon = styled.img<{ foodIcon: string }>`
   }
 `;
 
-export const StyledSpicyIcon = styled.img`
-  width: 46.42px;
-  height: 35.98px;
-  padding: 0px 0.28px 1.53px 0px;
-  gap: 0px;
-  opacity: 0px;
-`;
-
 export const StyledIconHeader = styled.p`
   font-family: Helvetica Neue;
   font-size: 18px;
