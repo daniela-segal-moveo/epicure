@@ -8,7 +8,7 @@ export const epicureData = {
   restaurants: [
     {
       name: "Claro",
-      chef: "Ran Shmueli",
+      chef: "Yossi Shitrit",
       isPopular: true,
       stars: 5,
       imgUrl:
@@ -16,7 +16,7 @@ export const epicureData = {
     },
     {
       name: "Taizu",
-      chef: "Shay Eyal",
+      chef: "Yossi Shitrit",
       isPopular: true,
       stars: 4,
       imgUrl:
@@ -46,6 +46,14 @@ export const epicureData = {
       imgUrl:
         "https://s3-alpha-sig.figma.com/img/4654/5298/0e02e7f4dc70672d9f64d9fc217096b9?Expires=1724630400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=FT-JgSY5huzFwBoLIcd7XI1Kb-9DEDXJQm78XskzpMO2TCYPZRg1SSrIPc2333h4g9sMrffQnBM-onwru2WLwYRKPJV1MFb3SXIeUZNOQiplHGjsw6xqYn7MGbMlgkyGIyaOgOImoD5-CYaHqKq5ZjStPHW0awkNXV2eyT6vwOdEupJBkkUODOgNpk4BvxWkDqzPv0-I3vnSmnWrD6UCamf9u9W4wIkjGFrfQ64zeND2lqb15931AWkyhqLR19LHuYE03Ts0vQIATZTsAFPc4fGHzFh9FQmCy5DeXD9G5KKu7K5vua7zDRvn~6g~6wBKbtwcx47RYQyOdtFbHLMO0A__",
     },
+    {
+        name: "Onaza",
+        chef: "Yossi Shitrit",
+        isPopular: false,
+        stars: 5,
+        imgUrl:
+          "https://s3-alpha-sig.figma.com/img/3364/2f99/35966d2dc88a312455bfcc2d806af889?Expires=1724630400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=bL3-eMp~a5AjA5zOPs7ceSgtEgTufpT~UliBuWHqSd80Oh7l0w-W-deNP01693qtvSEoOYCFKHt7snXHLpQPCkZnAUX5ooRUHY28rYp1MrWu8fkN6VmJySC~BAmgd9F7Mw2QZ2gwheGZrklqvFomcG8lftteMQ~rwzHFyEJANlKf1nJbqSNbPBITdpXjN4B0ZI~zJnHeYhx7dPi~3TNRp5kmp20ezOFkOHhBFFjO94XknacGmayaDofUADzigaGRHLgEL7NFUQ5YL3M5rJ8CwfzEMyHDAw5oQflf4OhKtD0-ZYxQk2hyBgWYR8FG2e1EsyxiJJcuf1ARxyWku77jTQ__",
+      },
   ],
   dishes: [
     {
@@ -109,10 +117,10 @@ export const epicureData = {
     },
   ],
   chefOfTheWeek: {
-    name: "Eyal Shani",
+    name: "Yossi Shitrit",
     restaurant: "Port Said",
-    bio: "Eyal Shani is a celebrated Israeli chef known for his innovative approach to Middle Eastern cuisine. His restaurant, Port Said, is renowned for its creative dishes and vibrant atmosphere.",
+    bio: "Chef Yossi Shitrit has been living and breathing his culinary dreams for more than two decades, including running the kitchen in his first restaurant, the fondly-remembered Violet, located in Moshav Udim. Shitrit's creativity and culinary acumen born of long experience are expressed in the every detail of each and every dish.",
     imgUrl:
-      "https://media.timeout.com/photos/55d40e5b80c64f657cf7f4a4/3:2/w_600,h_400,c_limit/eyal_shani.jpg",
+      "https://s3-alpha-sig.figma.com/img/ecf7/ed9d/73aeb3d11f70c9712f15e582329944ca?Expires=1724630400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=E6yteDfT7fxIUV2PwJIhilEp5kOcHhHCOEXUpLDrm9qKs7Uj60AVjdZvsVxvuojJUDLsTDXpwS8l2~Bbjaakm0ZSZai554qELOZkgTnye8sovwQq8WZeAaG1QcFRtWYiJCzp6eno2LIVMyMFjzIlWc4k006eYwg0VnCft3~ztCF0kEw5MdhmwpuLoI5iAlZyvwqzazNrb9SG0hhqWcdaENfuhOXnaKvM6mjPAENuxkoH5ZP-TmyRcXOwK0iXzqHKfOWIWZkpsjfW-vqKDOtRPL5ISsvDHivhtmo3--y~~~kGYXWARUDRoqZPVZdYF5iKNv4ZiAIM7UauaGb9B~FpLA__"
   },
 };

@@ -9,7 +9,7 @@ const useWindowWidth = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  return windowWidth >= 768;
+  return windowWidth >= 800;
 };
 
 export default useWindowWidth;
