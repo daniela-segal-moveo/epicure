@@ -1,7 +1,7 @@
 import styled from "styled-components";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 export const StyledSection = styled.section`
-  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -9,9 +9,9 @@ export const StyledSection = styled.section`
   margin: 127.5px;
   margin-top: 80px;
 
-  @media (max-width: 800px) {
-    align-items: flex-start;
-    margin: 20px;
+  @media (max-width: 1000px) {
+    margin: 0px;
+    margin-top: 48px;
   }
 `;
 
@@ -22,11 +22,13 @@ export const StyledChefHeader = styled.p`
   letter-spacing: 1.25px;
   text-align: center;
 
-  @media (max-width: 800px) {
+  @media (max-width: 1000px) {
     margin-bottom: 16px;
     font-size: 18px;
     text-align: left;
     margin-bottom: 40px;
+    margin-left: 20px;
+    margin-right: 20px;
   }
 `;
 
@@ -34,10 +36,12 @@ export const StyledChefProfileWarper = styled.div`
   display: flex;
   height: 372px;
   width: 100%;
-  @media (max-width: 800px) {
+  @media (max-width: 1000px) {
     flex-direction: column;
     height: unset;
     width: auto;
+    margin-left: 20px;
+    margin-right: 20px;
   }
 `;
 
@@ -49,7 +53,12 @@ export const StyledImgWarper = styled.div`
   gap: 0px;
   opacity: 0px;
 
-  @media (max-width: 800px) {
+  @media (max-width: 1000px) {
+    width: 478px;
+    height: 372px;
+  }
+
+  @media (max-width: 480px) {
     height: 262px;
     width: 100%;
   }
@@ -71,7 +80,7 @@ export const StyledChefNameDiv = styled.div`
   opacity: 80%;
   justify-content: center;
   align-items: center;
-  @media (max-width: 800px) {
+  @media (max-width: 1000px) {
     height: 51px;
   }
 `;
@@ -83,7 +92,7 @@ export const StyledchefName = styled.p`
   line-height: 47px;
   letter-spacing: 2.6700000762939453px;
   text-align: center;
-  @media (max-width: 800px) {
+  @media (max-width: 1000px) {
     font-size: 18px;
     font-weight: 400;
     line-height: 47px;
@@ -99,7 +108,7 @@ export const StyledChefBio = styled.p`
   text-align: justified;
   margin-left: 63.5px;
   width: 642px;
-  @media (max-width: 800px) {
+  @media (max-width: 1000px) {
     margin-left: auto;
     width: auto;
     font-size: 18px;
@@ -110,10 +119,8 @@ export const StyledChefBio = styled.p`
 `;
 
 export const StyledChefsRestaurantsContainer = styled.div`
-  display: flex;
   align-self: flex-start;
-  @media (max-width: 800px) {
-    margin-left: -20px;
+  @media (max-width: 480px) {
   }
 `;
 
@@ -142,4 +149,11 @@ export const StyledDesktopChefRestaurantContainer = styled.div`
   width: 100%;
   justify-content: space-between;
   gap: 16px;
+`;
+
+export const StyledSwiperSlide = styled(SwiperSlide)`
+display: flex;
+ width: 100% !important;
+justify-content: center;
+align-items: center; 
 `;

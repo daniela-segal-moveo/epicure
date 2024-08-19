@@ -1,5 +1,5 @@
+import React from 'react';
 import ArrowImg from "../../assets/icons/Arrow.svg";
-import { Navigation, Pagination, Scrollbar } from "swiper/modules";
 import {
   StyledSection,
   StyledHeader,
@@ -8,43 +8,47 @@ import {
   StyledAllRestaurantsDiv,
   StyledAllRestaurantsP,
   StyledIcon,
-} from "./SpotlightSection.styles"
+  FadeInDivWarper,
+  StyledWarper
+} from "./SpotlightSection.styles";
 import useWindowWidth from "../../hooks/useWindowWidth";
+import "swiper/bundle";
+import { Fade } from "react-awesome-reveal";
 
-const SLIDES_PER_VIEW_DESKTPOP = 3;
-const SLIDES_PER_VIEW_MOBILE = 1.3;
+const SLIDES_PER_VIEW_DESKTOP = 3;
+const SLIDES_PER_VIEW_MOBILE = 1.5;
+const SLIDER_SPACE = 24;
 
 interface SpotlightProps {
-    children: React.ReactNode
-    mainHeader: string;
+  children: React.ReactNode;
+  mainHeader: string;
 }
 
-export const SpotlightSection = ({children, mainHeader}: SpotlightProps) => {
-  const isDesktop = useWindowWidth();
+export const SpotlightSection = ({ children, mainHeader }: SpotlightProps) => {
+  const isDesktop = useWindowWidth() >= 480;
+
   return (
+    <StyledWarper className='wrapper'>
     <StyledSection>
-      <StyledHeader>
-        {mainHeader.toLocaleUpperCase()}
-      </StyledHeader>
+      <Fade>
+        <FadeInDivWarper>
+          <StyledHeader>{mainHeader.toLocaleUpperCase()}</StyledHeader>
+        </FadeInDivWarper>
+      </Fade>
       <StyledSwiperContainer>
         <StyledSwiper
-          modules={[Navigation, Pagination, Scrollbar]}
-          spaceBetween={30}
-          slidesPerView={
-            isDesktop ? SLIDES_PER_VIEW_DESKTPOP : SLIDES_PER_VIEW_MOBILE
-          }
+          slidesPerView={isDesktop ? SLIDES_PER_VIEW_DESKTOP : SLIDES_PER_VIEW_MOBILE} 
+          spaceBetween={SLIDER_SPACE}// Adjust slides per view
           loop={false}
-          navigation
-          pagination={{ clickable: true }}
-          scrollbar={{ draggable: true }}
         >
-            {children}
+          {children}
         </StyledSwiper>
       </StyledSwiperContainer>
-      <StyledAllRestaurantsDiv>
+      <StyledAllRestaurantsDiv to="/">
         <StyledAllRestaurantsP>All Restaurants</StyledAllRestaurantsP>
-        <StyledIcon src={ArrowImg}></StyledIcon>
+        <StyledIcon src={ArrowImg} />
       </StyledAllRestaurantsDiv>
     </StyledSection>
+    </StyledWarper>
   );
 };

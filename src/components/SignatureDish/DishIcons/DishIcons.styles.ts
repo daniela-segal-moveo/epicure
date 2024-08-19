@@ -8,7 +8,7 @@ export const StyledFoodIconsContainer = styled.div`
   margin-bottom: 18px;
   margin-top: 8px;
 
-  @media (max-width: 480px) {
+  @media (max-width: 800px) {
     justify-content: unset;
     align-items: unset;
     margin-bottom: unset;
@@ -25,7 +25,7 @@ export const StyledIcon = styled.img`
   top: 11px;
   margin-right: 5px;
 
-  @media (max-width: 480px) {
+  @media (max-width: 800px) {
     width: 24px;
   }
 `;

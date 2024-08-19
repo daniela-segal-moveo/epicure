@@ -10,7 +10,23 @@ export const StyledIngredientsContainer = styled.div`
   padding-right: 42px;
   margin-bottom: 18px;
 
-  @media (max-width: 480px) {
+  @media (max-width: 1200px) {
+    margin-top: 8px;
+    padding-left: 42px;
+    padding-right: 42px;
+    margin-bottom: 0;
+    height: 240px;
+  }
+
+  @media (max-width: 1100px) {
+    margin-top: 8px;
+    padding-left: 42px;
+    padding-right: 42px;
+    margin-bottom: 0;
+    height: 310px;
+  }
+
+  @media (max-width: 800px) {
     margin-top: 8px;
     padding: unset;
     margin-bottom: 0;
@@ -26,7 +42,7 @@ export const StyledIngredients = styled.p`
   text-align: center;
   margin: 0;
 
-  @media (max-width: 480px) {
+  @media (max-width: 800px) {
     font-size: 16px;
     font-weight: 200;
     line-height: 20px;
@@ -40,9 +56,12 @@ export const StyledDishPriceContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin-bottom: 12px;
+  margin-top: 18px;
 
-  @media (max-width: 480px) {
+  @media (max-width: 800px) {
     width: max-content;
+    margin-top: 16px;
+    margin-bottom: unset
   }
 `;
 
@@ -55,7 +74,7 @@ export const StyledDishPrice = styled.p`
   text-align: center;
   margin: 0;
 
-  @media (max-width: 480px) {
+  @media (max-width: 800px) {
     font-family: Helvetica Neue;
     font-size: 16px;
     font-weight: 400;
@@ -76,7 +95,7 @@ export const StyledIlsIcon = styled.img`
   height: 19px;
   gap: 0px;
   opacity: 0px;
-  @media (max-width: 480px) {
+  @media (max-width: 800px) {
     margin-right: 8px;
     width: 8.11px;
     margin-top: 4px;
@@ -93,4 +112,8 @@ export const StyledGreyLine = styled.div`
   border: 0.5px 0px 0px 0px;
   opacity: 0px;
   border: 0.5px solid #979797;
+
+  @media (max-width: 1300px) {
+    width: 60px;
+  }
 `;

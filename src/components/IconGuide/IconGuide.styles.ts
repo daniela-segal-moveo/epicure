@@ -5,9 +5,9 @@ export const StyledIconGuidesection = styled.section`
   height: 265px;
   opacity: 0px;
   background: #fafafa;
-  margin-top: 10px;
+  margin-top: 80px;
 
-  @media (max-width: 480px) {
+  @media (max-width: 800px) {
     display: flex;
     justify-content: center;
     align-items: center !important;
@@ -21,7 +21,7 @@ export const StyledIconGuideContainer = styled.div`
   flex-direction: column;
   align-items: center;
   height: 100%;
-  @media (max-width: 480px) {
+  @media (max-width: 800px) {
     padding: 0px;
     gap: 0px;
     opacity: 0px;
@@ -36,7 +36,7 @@ export const StyledIconGuideHeader = styled.div`
   text-align: center;
   margin-top: 35px;
 
-  @media (max-width: 480px) {
+  @media (max-width: 800px) {
     margin-top: 24px;
     font-size: 18px;
     font-weight: 200;
@@ -46,10 +46,10 @@ export const StyledIconGuideHeader = styled.div`
 `;
 
 export const StyledIconGuideHolder = styled.div`
-display: flex;
-flex-direction: row;
-margin-bottom: 35px;
-  @media (max-width: 480px) {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 35px;
+  @media (max-width: 800px) {
     display: flex;
     margin-top: -24px;
     flex-direction: column;
@@ -57,7 +57,9 @@ margin-bottom: 35px;
   }
 `;
 
-export const StyledIconWarper = styled.div<{ foodIcon: string }>`
+export const StyledIconWarper = styled.div.withConfig({
+    shouldForwardProp: (prop => prop !== "foodIcon")
+})<{ foodIcon: string }>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -67,22 +69,24 @@ export const StyledIconWarper = styled.div<{ foodIcon: string }>`
   height: 127px;
   opacity: 0px;
 
-  @media (max-width: 480px){
+  @media (max-width: 800px) {
     height: ${(props) => (props.foodIcon === "spicy" ? "102px" : "127px")};
     margin-top: 56px;
   }
 `;
 
-export const StyledIcon = styled.img<{ foodIcon: string }>`
-  width:  77.42px;
+export const StyledIcon = styled.img.withConfig({
+    shouldForwardProp: (prop => prop !== "foodIcon")
+})<{ foodIcon: string }>`
+  width: 77.42px;
   height: 60px;
   padding: 1.94px 9.99px 1.79px 11.61px;
   gap: 0px;
   opacity: 0px;
 
-  @media (max-width: 480px) {
+  @media (max-width: 800px) {
     width: ${(props) => (props.foodIcon === "spicy" ? "46.42px" : "77.42px")};
-  height: ${(props) => (props.foodIcon === "spicy" ? "34.44px" : "60px")};
+    height: ${(props) => (props.foodIcon === "spicy" ? "34.44px" : "60px")};
   }
 `;
 

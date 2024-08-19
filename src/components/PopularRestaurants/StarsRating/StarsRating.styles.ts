@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import FilledStarImg from "../../../assets/icons/FilledStar.svg"
-import EmptyStarImg from "../../../assets/icons/EmptyStar.svg"
+import FilledStarImg from "../../../assets/icons/FilledStar.svg";
+import EmptyStarImg from "../../../assets/icons/EmptyStar.svg";
 
 export const StyledStarContainer = styled.div`
   display: inline-flex;
@@ -8,16 +8,20 @@ export const StyledStarContainer = styled.div`
   margin-bottom: 18px;
 `;
 
-export const StyledStar = styled.div<{ filled: boolean }>`
-    display: flex;
+export const StyledStar = styled.div.withConfig({
+  shouldForwardProp: (prop) => prop !== "filled",
+})<{ filled: boolean }>`
+  display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 0.1rem;
+  margin-right: 4px;
   width: 40px;
   height: 40px;
-  background: ${props => props.filled 
-    ? `url(${FilledStarImg}) no-repeat center center` 
-    : `url(${EmptyStarImg}) no-repeat center center`};
+  background: ${(props) =>
+    props.filled
+      ? `url(${FilledStarImg}) no-repeat center center`
+      : `url(${EmptyStarImg}) no-repeat center center`};
   background-size: cover;
   cursor: default;
   font-size: 1.5rem;

@@ -20,29 +20,29 @@ import { TabLinks } from "./TabLinks";
 
 export const NavBar = () => {
   const [navHamburOpen, setHamburOpen] = useState<boolean>(false);
-  const windowWidth = useWindowWidth();
+  const windowWidth = useWindowWidth()>=900;
 
   return (
     <>
-      <StyledNavBarContainer>
-        {!windowWidth && (
-          <StyledHamburger
-            src={HamburSvg}
-            onClick={() => setHamburOpen(true)}
-          ></StyledHamburger>
-        )}
-        <StyledLogo src={windowWidth ? DesktopLogoImg : LogoImg}></StyledLogo>
-        {windowWidth && <TabLinks />}
-        <StyledIconsContainer>
-          <StyledIcon src={SearchIcon}></StyledIcon>
-          <StyledIcon src={PersonIcon}></StyledIcon>
-          <StyledIcon src={BagIcon}></StyledIcon>
-        </StyledIconsContainer>
-      </StyledNavBarContainer>
-      <SideNavBarMenu
-        open={navHamburOpen}
-        setOpen={setHamburOpen}
-      ></SideNavBarMenu>
-    </>
+        <StyledNavBarContainer>
+          {!windowWidth && (
+            <StyledHamburger
+              src={HamburSvg}
+              onClick={() => setHamburOpen(true)}
+            ></StyledHamburger>
+          )}
+          <StyledLogo src={windowWidth ? DesktopLogoImg : LogoImg}></StyledLogo>
+          {windowWidth && <TabLinks />}
+          <StyledIconsContainer>
+            <StyledIcon src={SearchIcon}></StyledIcon>
+            <StyledIcon src={PersonIcon}></StyledIcon>
+            <StyledIcon src={BagIcon}></StyledIcon>
+          </StyledIconsContainer>
+        </StyledNavBarContainer>
+        <SideNavBarMenu
+          open={navHamburOpen}
+          setOpen={setHamburOpen}
+        ></SideNavBarMenu>
+      </>
   );
 };
