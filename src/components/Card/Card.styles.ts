@@ -26,8 +26,12 @@ export const StyledImg = styled.img`
   }
 `;
 export const StyledContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: left;
   @media (max-width: 480px) {
+    align-items: unset;
     margin: 16px;
   }
 `;
@@ -38,10 +42,12 @@ export const StyledHeader = styled.p`
   line-height: 47px;
   letter-spacing: 2.6700000762939453px;
   text-align: center;
-  margin:0;
+  margin: 0;
   margin-top: 18px;
+  width: 194px;
 
   @media (max-width: 480px) {
+    width: 100%;
     font-size: 18px;
     font-weight: 400;
     line-height: 21.47px;
