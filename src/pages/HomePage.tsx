@@ -4,6 +4,7 @@ import { PopularRestaurants } from "../components/PopularRestaurants/PopularRest
 import { SignatureDish } from "../components/SignatureDish/SignatureDish";
 import { IconGuide } from "../components/IconGuide/IconGuide";
 import { ChefOfTheWeek } from "../components/ChefOfTheWeek/ChefOfTheWeek";
+import { AboutUs } from "../components/AboutUs/AboutUs";
 
 export const HomePage = () => {
   return (
@@ -13,6 +14,7 @@ export const HomePage = () => {
       <SignatureDish></SignatureDish>
       <IconGuide/>
       <ChefOfTheWeek></ChefOfTheWeek>
+      <AboutUs/>
     </StyledDefultPageContainer>
   );
 };
