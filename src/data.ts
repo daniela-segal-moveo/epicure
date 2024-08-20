@@ -21,14 +21,14 @@ export const epicureData = {
       imgUrl: ClaroImg,
     },
     {
-      name: "Lueima",
+      name: "Lumina",
       chef: "Meir Adoni",
       isPopular: true,
       stars: 4,
       imgUrl: LumiaImg,
     },
     {
-      name: "Onaza",
+      name: "Onza",
       chef: "Yossi Shitrit",
       isPopular: true,
       stars: 5,
@@ -73,8 +73,7 @@ export const epicureData = {
       name: "Garbanzo Frito",
       imgUrl: LumiaImg,
       description: "Fresh sushi rolls with a variety of fillings and toppings.",
-      ingredients:
-        "Polenta fingers, veal cheek, magic chili cured lemon cream, yellow laksa",
+      ingredients: "Polenta fingers, veal cheek, magic chili cured lemon cream, yellow laksa",
       isSignature: true,
       restaurant: "Taizu",
       category: ["spicy"],
@@ -118,6 +117,7 @@ export const epicureData = {
     name: "Yossi Shitrit",
     restaurant: "Port Said",
     bio: "Chef Yossi Shitrit has been living and breathing his culinary dreams for more than two decades, including running the kitchen in his first restaurant, the fondly-remembered Violet, located in Moshav Udim. Shitrit's creativity and culinary acumen born of long experience are expressed in the every detail of each and every dish.",
-    imgUrl: chefImg,
+    imgUrl:
+      "https://s3-alpha-sig.figma.com/img/ecf7/ed9d/73aeb3d11f70c9712f15e582329944ca?Expires=1724630400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=E6yteDfT7fxIUV2PwJIhilEp5kOcHhHCOEXUpLDrm9qKs7Uj60AVjdZvsVxvuojJUDLsTDXpwS8l2~Bbjaakm0ZSZai554qELOZkgTnye8sovwQq8WZeAaG1QcFRtWYiJCzp6eno2LIVMyMFjzIlWc4k006eYwg0VnCft3~ztCF0kEw5MdhmwpuLoI5iAlZyvwqzazNrb9SG0hhqWcdaENfuhOXnaKvM6mjPAENuxkoH5ZP-TmyRcXOwK0iXzqHKfOWIWZkpsjfW-vqKDOtRPL5ISsvDHivhtmo3--y~~~kGYXWARUDRoqZPVZdYF5iKNv4ZiAIM7UauaGb9B~FpLA__",
   },
 };

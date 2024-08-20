@@ -7,11 +7,13 @@ export const StyledFoodIconsContainer = styled.div`
   font-size: 1.5rem;
   margin-bottom: 18px;
   margin-top: 8px;
+  min-height: 40px;
 
   @media (max-width: 800px) {
     justify-content: unset;
     align-items: unset;
     margin-bottom: unset;
+    min-height: 30px;
   }
 `;
 

@@ -25,7 +25,7 @@ interface SpotlightProps {
 }
 
 export const SpotlightSection = ({ children, mainHeader }: SpotlightProps) => {
-  const isDesktop = useWindowWidth() >= 480;
+  const isDesktop = useWindowWidth() >= 500;
 
   return (
     <StyledWarper className='wrapper'>

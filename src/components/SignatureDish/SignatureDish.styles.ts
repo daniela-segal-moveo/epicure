@@ -9,6 +9,8 @@ export const StyledIngredientsContainer = styled.div`
   padding-left: 42px;
   padding-right: 42px;
   margin-bottom: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   @media (max-width: 1200px) {
     margin-top: 8px;

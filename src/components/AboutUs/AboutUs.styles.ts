@@ -8,6 +8,11 @@ export const StyledSection = styled.section`
   padding-left: 20px;
   padding-top: 24px;
   padding-bottom: 48px;
+  margin-top: 90px;
+
+  @media (max-width: 900px) {
+    margin-top: 60px;
+  }
 `;
 
 export const StyledSectionContainer = styled.div`
@@ -106,7 +111,7 @@ export const StyledAboutUsContent = styled.p`
 `;
 
 export const StyledSpacer = styled.br`
-@media(max-width:900px){
-display: none;
-}
-`
+  @media (max-width: 900px) {
+    display: none;
+  }
+`;
