@@ -8,6 +8,11 @@ export const StyledSection = styled.section`
   padding-left: 20px;
   padding-top: 24px;
   padding-bottom: 48px;
+  margin-top: 90px;
+
+  @media (max-width: 900px) {
+    margin-top: 60px;
+  }
 `;
 
 export const StyledSectionContainer = styled.div`
@@ -18,7 +23,7 @@ export const StyledSectionContainer = styled.div`
   padding-right: 132px;
   justify-content: space-between;
 
-  @media (max-width: 800px) {
+  @media (max-width: 900px) {
     flex-direction: column;
     padding-left: 0;
     justify-content: unset;
@@ -32,7 +37,7 @@ export const StyledLogo = styled.img`
   gap: 0px;
   opacity: 0px;
 
-  @media (max-width: 800px) {
+  @media (max-width: 900px) {
     width: 102px;
     height: 95px;
   }
@@ -42,7 +47,7 @@ export const StyledAboutUsHolder = styled.div`
   display: flex;
   flex-direction: column-reverse;
 
-  @media (max-width: 800px) {
+  @media (max-width: 900px) {
     flex-direction: column;
   }
 `;
@@ -57,7 +62,7 @@ export const StyledGetItOnContainer = styled.div`
   opacity: 0px;
   margin-top: 32px;
 
-  @media (max-width: 800px) {
+  @media (max-width: 900px) {
     flex-direction: column;
   }
 `;
@@ -65,6 +70,7 @@ export const StyledGetItOnContainer = styled.div`
 export const StyledGetItOnFrame = styled.img`
   width: Hug (180px) px;
   height: Hug (52px) px;
+  cursor: pointer;
 `;
 
 export const StyledAboutUsContentWarper = styled.div`
@@ -97,7 +103,7 @@ export const StyledAboutUsContent = styled.p`
   text-align: left;
   width: 569px;
 
-  @media (max-width: 480px) {
+  @media (max-width: 900px) {
     font-size: 18px;
     line-height: 28px;
     width: unset;
@@ -105,7 +111,7 @@ export const StyledAboutUsContent = styled.p`
 `;
 
 export const StyledSpacer = styled.br`
-@media(max-width:800px){
-display: none;
-}
-`
+  @media (max-width: 900px) {
+    display: none;
+  }
+`;

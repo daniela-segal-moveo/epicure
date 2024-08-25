@@ -1,14 +1,14 @@
 import {
   StyledDrawerContainer,
   StyledOverlay,
-  StyledHamburger,
+  StyledCloseButton,
   StyledDivider,
-  StyledTabWarper
+  StyledTabWarper,
 } from "../NavBar/NavBar.styles";
 
-import {TabLinks} from "./TabLinks"
+import { TabLinks } from "./TabLinks";
 import { Footer } from "../Footer/Footer";
-import CloseIcon from "../../assets/icons/CloseIcon.svg"
+import CloseIcon from "../../assets/icons/CloseIcon.svg";
 
 interface NavBarProps {
   open: boolean;
@@ -19,10 +19,15 @@ export const SideNavBarMenu = ({ open, setOpen }: NavBarProps) => {
   return (
     <>
       <StyledDrawerContainer open={open}>
-        <StyledHamburger src = {CloseIcon} onClick={() => setOpen(false)}></StyledHamburger>
-        <StyledTabWarper><TabLinks/></StyledTabWarper>
-        <StyledDivider/>
-        <Footer/>
+        <StyledCloseButton
+          src={CloseIcon}
+          onClick={() => setOpen(false)}
+        ></StyledCloseButton>
+        <StyledTabWarper>
+          <TabLinks />
+        </StyledTabWarper>
+        <StyledDivider />
+        <Footer />
       </StyledDrawerContainer>
       <StyledOverlay open={open} onClick={() => setOpen(false)} />
     </>

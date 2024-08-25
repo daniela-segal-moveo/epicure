@@ -12,6 +12,7 @@ export const StyledFooterWarper = styled.div`
   @media (max-width: 800px) {
     justify-content: flex-start;
     height: 202px;
+    margin-bottom: 20px;
   }
 `;
 

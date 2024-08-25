@@ -10,7 +10,7 @@ export const StyledNavBarContainer = styled.div`
   justify-content: flex-start;
   position: relative;
 
-  @media (max-width: 480px) {
+  @media (max-width: 800px) {
     height: 46px;
     justify-content: space-between;
   }
@@ -25,7 +25,7 @@ export const StyledIconsContainer = styled.div`
   top: 50%;
   transform: translateY(-50%);
 
-  @media (max-width: 480px) {
+  @media (max-width: 900px) {
     position: absolute;
     right: 20px;
   }
@@ -37,7 +37,7 @@ export const StyledTabContainer = styled.div`
   gap: 16px;
   padding: 16px;
 
-  @media (max-width: 480px) {
+  @media (max-width: 900px) {
     flex-direction: column;
     margin-top: 46px;
     height: 146px;
@@ -65,6 +65,7 @@ export const StyledTabLink = styled(Link)`
   text-align: left;
   color: #000000;
   text-decoration: none;
+  cursor: pointer;
 `;
 
 export const StyledDivider = styled.div`
@@ -87,14 +88,15 @@ export const StyledLogo = styled.img`
   margin: 14px;
   margin-left: 127px;
 
-  @media (max-width: 480px) {
+  @media (max-width: 900px) {
     margin: 0px;
     align-self: center;
     justify-self: center;
     position: absolute;
-    left: 50%;
+    left:50%;
+    top:50%;
     width: 32.93px;
-    transform: translateX(-100%);
+    transform: translate(-100%, -50%);
   }
 `;
 
@@ -111,10 +113,12 @@ export const StyledHamburger = styled.img`
   width: 24px;
   position: absolute;
   left: 20px;
+  top:50%;
+  transform: translateY(-50%);
   aspect-ratio: 1/1;
   cursor: pointer;
-  top: 11px;
 `;
+
 
 export const StyledDrawerContainer = styled.div<{ open: boolean }>`
   position: fixed;
@@ -147,10 +151,10 @@ export const StyledOverlay = styled.div<{ open: boolean }>`
   z-index: 999;
 `;
 
-export const StyledCloseButton = styled.button`
+export const StyledCloseButton = styled.img`
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 11px;
+  left: 20px;
   background: none;
   border: none;
   color: black;

@@ -9,7 +9,7 @@ export const StyledCardContainer = styled.div`
   width: 379px;
   min-height: 357px;
 
-  @media (max-width: 800px) {
+  @media (max-width: 900px) {
     width: 245px;
     min-height: 234px;
     justify-content: unset;
@@ -36,9 +36,11 @@ export const StyledContentContainer = styled.div`
     margin: 16px;
   }
 `;
-export const StyledHeader = styled.p`
+export const StyledHeader = styled.p.withConfig({
+    shouldForwardProp: (prop) => prop !== "headerFontSize",
+  })<{ headerFontSize: string | undefined}>`
   font-family: Helvetica Neue;
-  font-size: 40px;
+  font-size: ${(props) => (props.headerFontSize ? props.headerFontSize : "40px")};
   font-weight: 400;
   line-height: 47px;
   letter-spacing: 2.6700000762939453px;

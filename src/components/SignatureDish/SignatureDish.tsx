@@ -1,4 +1,4 @@
-import { StyledSwiperSlide } from "../PopularRestaurants/PopularRestaurants.styles";
+import { StyledSwiperSlide } from "../SpotlightSection/SpotlightSection.styles";
 import {
   StyledIngredients,
   StyledDishPrice,
@@ -16,7 +16,7 @@ import { DishIcons } from "./DishIcons/DishIcons";
 import IlsImg from "../../assets/icons/ILS.svg";
 
 export const SignatureDish = () => {
-  const isDesktop = useWindowWidth();
+  const isDesktop = useWindowWidth()>=900;
   return (
     <SpotlightSection mainHeader="Signature Dish Of:">
       {epicureData.dishes

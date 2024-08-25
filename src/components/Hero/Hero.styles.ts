@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import searchIcon from "../../assets/icons/Search.svg";
 
 export const StyledHeroContainer = styled.div`
@@ -11,7 +11,7 @@ export const StyledHeroContainer = styled.div`
   gap: 0px;
   opacity: 0px;
 
-  @media (max-width: 480px) {
+  @media (max-width: 800px) {
     height: 273px;
   }
 `;
@@ -38,7 +38,7 @@ export const StyledSearchContainer = styled.div`
   transform: translate(-50%, -50%);
   text-align: center;
 
-  @media (max-width: 480px) {
+  @media (max-width: 800px) {
     height: 144px;
     width: 335px;
   }
@@ -61,7 +61,7 @@ export const StyledHeroHeader = styled.p`
   letter-spacing: 1.9700000286102295px;
   text-align: left;
 
-  @media (max-width: 480px) {
+  @media (max-width: 800px) {
     height: 64px;
     width: 317px;
     font-size: 24px;
@@ -98,7 +98,7 @@ export const StyledSearchBar = styled.input`
     text-align: center;
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 800px) {
     width: 315px;
     height: 30px;
     background-size: 12px;
@@ -118,4 +118,23 @@ export const StyledSearchBar = styled.input`
       text-align: center;
     }
   }
+`;
+
+const fadeInFlipInX = keyframes`
+   0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+`;
+
+export const FlipInDiv = styled.div`
+  animation: ${fadeInFlipInX} 1s ease-out;
 `;

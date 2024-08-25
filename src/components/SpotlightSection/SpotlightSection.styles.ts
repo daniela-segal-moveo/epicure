@@ -1,16 +1,49 @@
-import styled from "styled-components";
+import styled, { CSSProperties, keyframes } from "styled-components";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Link } from "react-router-dom";
+
+const fadeInDown = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
+export const FadeInDivWarper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: ${fadeInDown} 1s ease-out;
+
+  @media (max-width: 900px) {
+    justify-content: unset;
+    align-items: unset;
+  }
+`;
 
 export const StyledSection = styled.section`
   display: flex;
-  width: 1185px;
   flex-direction: column;
-  margin-top: 48px;
+  margin-top: 60px;
   align-self: center;
 
-  @media (max-width: 480px) {
+  @media (max-width: 800px) {
     align-self: auto;
-    width: auto;
+    width: 100%;
+  }
+`;
+
+export const StyledWarper = styled.div`
+  padding-left: 127px;
+  padding-right: 127px;
+
+  @media (max-width: 1000px) {
+    padding-left: 20px;
+    padding-right: 0px;
   }
 `;
 
@@ -23,15 +56,13 @@ export const StyledHeader = styled.header`
   text-align: center;
   margin-bottom: 40px;
 
-  @media (max-width: 480px) {
+  @media (max-width: 800px) {
     font-family: Helvetica Neue;
     font-size: 18px;
     font-weight: 200;
     line-height: 24px;
     letter-spacing: 1.25px;
     align-self: flex-start;
-    margin: 29px;
-    margin-left: 20px;
     margin-top: 0;
     margin-bottom: 8px;
   }
@@ -44,34 +75,38 @@ export const StyledSwiperContainer = styled.div`
   box-sizing: border-box;
   width: 100%;
 
-  @media (max-width: 480px) {
-    margin-left: 20px;
+  @media (max-width: 800px) {
     margin-right: auto;
   }
 `;
 
 export const StyledSwiperSlide = styled(SwiperSlide)`
-  width: max-content !important;
+display: flex;
 `;
 export const StyledSwiper = styled(Swiper)`
   display: flex;
-  justify-content: flex-start !important;
+  justify-content: flex-start;
+  width: 100%;
 
   .swiper-wrapper {
     display: flex;
   }
 `;
 
-export const StyledAllRestaurantsDiv = styled.div`
+export const StyledAllRestaurantsDiv = styled(Link)`
   display: flex;
   width: max-content;
   height: 35px;
-  margin: 20px;
+  margin-top: 20px;
   align-self: flex-end;
   cursor: pointer;
+  color: black;
+  text-decoration: none;
+  
 
-  @media (max-width: 480px) {
+  @media (max-width: 800px) {
     align-self: flex-start;
+    margin-right: unset;
   }
 `;
 

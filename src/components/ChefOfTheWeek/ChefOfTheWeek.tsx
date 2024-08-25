@@ -11,15 +11,16 @@ import {
   StyledDesktopChefRestaurantContainer,
   StyledDesktopChefRestaurantWarper,
   StyledDesktopChefRestaurantsHeader,
+//   StyledSwiperSlide
 } from "./ChefOfTheWeek.styles";
 import { epicureData } from "../../data";
 import { SpotlightSection } from "../SpotlightSection/SpotlightSection";
-import { StyledSwiperSlide } from "../SpotlightSection/SpotlightSection.styles";
 import { Card } from "../Card/Card";
 import useWindowWidth from "../../hooks/useWindowWidth";
+import {StyledSwiperSlide} from "../SpotlightSection/SpotlightSection.styles"
 
 export const ChefOfTheWeek = () => {
-  const isDesktop = useWindowWidth();
+  const isDesktop = useWindowWidth() >= 900;
   return (
     <StyledSection>
       <StyledChefHeader>CHEF OF THE WEEK:</StyledChefHeader>
@@ -49,6 +50,7 @@ export const ChefOfTheWeek = () => {
                     key={restaurant.name}
                     imgSrc={restaurant.imgUrl}
                     header={restaurant.name}
+                    headerFontSize="30px"
                   >
                     {null}
                   </Card>
@@ -70,9 +72,9 @@ export const ChefOfTheWeek = () => {
               )
               .map((restaurant) => (
                 <StyledSwiperSlide key={restaurant.name}>
-                  <Card imgSrc={restaurant.imgUrl} header={restaurant.name}>
+                 <Card imgSrc={restaurant.imgUrl} header={restaurant.name}>
                     {null}
-                  </Card>
+                 </Card>
                 </StyledSwiperSlide>
               ))}
           </SpotlightSection>
