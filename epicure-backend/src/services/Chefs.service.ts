@@ -51,14 +51,15 @@ export default {
           })
         );
       }
+      console.log(chefId)
 
-      const updatedDish = await Restaurant.findByIdAndUpdate(
+      const updatedChef = await Chef.findByIdAndUpdate(
         chefId,
         { $set: updateData },
         { new: true, runValidators: true }
       );
 
-      return updatedDish;
+      return updatedChef;
     } catch (error) {
       console.error("Error updating chef:", error);
       throw new Error("Could not update chef");
