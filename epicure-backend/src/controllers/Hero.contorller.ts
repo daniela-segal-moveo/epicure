@@ -12,11 +12,11 @@ export const getHeroData = async (req: Request, res: Response) => {
   }
 };
 
-export const insertHero = async (req: Request, res: Response) => {
+export const addHero = async (req: Request, res: Response) => {
   const newHero = req.body;
 
   try {
-    await HeroService.insertHero(newHero);
+    await HeroService.addHero(newHero);
     res.status(201).json("hero was entered");
   } catch (error) {
     console.error(error);

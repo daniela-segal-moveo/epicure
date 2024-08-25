@@ -10,7 +10,7 @@ export default {
     }
   },
 
-  async insertHero(heroData: IHero) {
+  async addHero(heroData: IHero) {
     try {
       const hero = new Hero(heroData);
       await hero.save();

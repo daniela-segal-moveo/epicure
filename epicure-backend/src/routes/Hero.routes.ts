@@ -1,11 +1,11 @@
 import express from "express";
-import { getHeroData, insertHero, updateHero } from "../controllers/Hero.contorller";
+import { getHeroData, addHero, updateHero } from "../controllers/Hero.contorller";
 
 const router = express.Router();
 
 router.get("/", getHeroData);
 
-router.post("/insertHero", insertHero);
+router.post("/insertHero", addHero);
 
 router.put("/updateHero/:id", updateHero);
 

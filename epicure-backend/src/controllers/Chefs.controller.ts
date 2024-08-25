@@ -27,7 +27,7 @@ export const addChef = async (req: Request, res: Response) => {
   const chef: IChef = req.body;
 
   try {
-    const newChef = await ChefsService.insertChefToDB(chef);
+    const newChef = await ChefsService.addChef(chef);
     res.status(201).json(newChef);
   } catch (error) {
     console.error(error);

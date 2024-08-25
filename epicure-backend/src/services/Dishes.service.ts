@@ -27,7 +27,7 @@ export default {
     }
   },
 
-  async insertDishToDB(dishData: IDish) {
+  async addDish(dishData: IDish) {
     try {
       const newDish = new Dish(dishData);
       const savedDish: IDish = await newDish.save();

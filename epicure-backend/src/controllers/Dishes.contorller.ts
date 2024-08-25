@@ -27,7 +27,7 @@ export const addDish = async (req: Request, res: Response) => {
   const dish: IDish = req.body;
 
   try {
-    const newDish = await DishesService.insertDishToDB(dish);
+    const newDish = await DishesService.addDish(dish);
     res.status(201).json(newDish);
   } catch (error) {
     console.error(error);

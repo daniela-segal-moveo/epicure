@@ -27,7 +27,7 @@ export default {
     }
   },
 
-  async insertChefToDB(chefData: IChef) {
+  async addChef(chefData: IChef) {
     try {
       const newChef = new Chef(chefData);
       await newChef.save();
@@ -51,7 +51,6 @@ export default {
           })
         );
       }
-      console.log(chefId)
 
       const updatedChef = await Chef.findByIdAndUpdate(
         chefId,

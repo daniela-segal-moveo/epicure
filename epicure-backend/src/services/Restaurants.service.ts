@@ -30,7 +30,7 @@ export default {
     }
   },
 
-  async insertRestaurantToDB(restaurantData: IRestaurant) {
+  async addRestaurant(restaurantData: IRestaurant) {
     try {
       const newRestaurant = new Restaurant(restaurantData);
       await newRestaurant.save();

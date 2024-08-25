@@ -26,7 +26,7 @@ export const addRestaurants = async (req: Request, res: Response) => {
   const restaurant: IRestaurant = req.body;
 
   try {
-    await RestaurantsService.insertRestaurantToDB(restaurant);
+    await RestaurantsService.addRestaurant(restaurant);
     res.status(201).json("Restaurant added");
   } catch (error) {
     console.error(error);
