@@ -13,7 +13,7 @@ export const Card = ({ imgSrc,header,headerFontSize, children }: CardProps) => {
     <StyledCardContainer>
       <StyledImg src={imgSrc} alt="Card image" />
       <StyledContentContainer>
-        <StyledHeader headerFontSize ={headerFontSize}>{header}</StyledHeader>
+        <StyledHeader headerFontSize = {headerFontSize}>{header}</StyledHeader>
         {children}
       </StyledContentContainer>
     </StyledCardContainer>

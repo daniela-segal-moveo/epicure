@@ -3,7 +3,7 @@ import express from "express";
 import { createServer } from "http";
 import logger from "morgan";
 import cors from "cors";
-import apiRouter from "./routes";
+import apiRouter from "./routes/index.routes";
 import mongoose from "mongoose";
 
 // Load environment variables

@@ -1,12 +1,12 @@
 import mongoose, { Schema, Document } from "mongoose";
 
-export interface IHero {
+export interface IHero extends Document {
   ImgUrl: string;
   header: string;
   searchBarText: string;
 }
 
-const HeroSchema: Schema = new Schema({
+const HeroSchema: Schema = new mongoose.Schema({
   ImgUrl: { type: String, required: true },
   header: { type: String, required: true },
   searchBarText: { type: String, required: true },

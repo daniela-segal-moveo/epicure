@@ -1,7 +1,7 @@
 import express from "express";
-import DishesRouter from "../routes/Dishes";
-import ChefsRouter from "../routes/Chefs"
-import RestaurantsRouter from "../routes/Restaurants"
+import DishesRouter from "./Dishes.routes";
+import ChefsRouter from "./Chefs.routes"
+import RestaurantsRouter from "./Restaurants.routes"
 
 const apiRouter = express.Router({
   strict: true,

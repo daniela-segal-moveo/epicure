@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
-import HeroService from "../services/Hero";
+import HeroService from "../services/Hero.service";
+import { IHero } from "../models/Hero.model";
 
 export const getHeroData = async (req: Request, res: Response) => {
   try {
@@ -12,14 +13,10 @@ export const getHeroData = async (req: Request, res: Response) => {
 };
 
 export const insertHero = async (req: Request, res: Response) => {
-  const { ImgUrl, header, searchBarText } = req.body;
+  const newHero = req.body;
 
   try {
-    await HeroService.insertHero({
-      ImgUrl,
-      header,
-      searchBarText,
-    });
+    await HeroService.insertHero(newHero);
     res.status(201).json("hero was entered");
   } catch (error) {
     console.error(error);
@@ -29,7 +26,7 @@ export const insertHero = async (req: Request, res: Response) => {
 
 export const updateHero = async (req: Request, res: Response) => {
   const { id } = req.params;
-  const updateData = req.body;  // The data to update
+  const updateData = req.body;
   try {
     const updatedHero = await HeroService.updateHero(updateData,id);
     res.json(updatedHero);

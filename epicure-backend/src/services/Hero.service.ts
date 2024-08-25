@@ -1,5 +1,5 @@
-import { IHero } from "../modals/Hero";
-import Hero from "../modals/Dish";
+import { IHero } from "../models/Hero.model";
+import Hero from "../models/Dish.model";
 export default {
   async getHeroData() {
     try {
@@ -22,7 +22,6 @@ export default {
 
   async updateHero(updatedData: IHero, id: string) {
     try {
-        // Find the hero by ID and update it with the provided data
         const updatedHero = await Hero.findByIdAndUpdate(id, updatedData, { new: true }).exec();
         if (!updatedHero) {
           throw new Error("Hero not found");

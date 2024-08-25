@@ -12,9 +12,9 @@ export const HomePage = () => {
       <Hero></Hero>
       <PopularRestaurants />
       <SignatureDish></SignatureDish>
-      <IconGuide/>
+      <IconGuide />
       <ChefOfTheWeek></ChefOfTheWeek>
-      <AboutUs/>
+      <AboutUs />
     </StyledDefultPageContainer>
   );
 };
