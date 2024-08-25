@@ -20,9 +20,6 @@ export default {
       if (!chef) {
         throw new Error("Could not find dish");
       }
-
-      
-      console.log(chef)
       return chef;
     } catch (error) {
       console.error("Error finding chef:", error);
