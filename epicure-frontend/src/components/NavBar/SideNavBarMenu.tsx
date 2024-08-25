@@ -4,7 +4,7 @@ import {
   StyledCloseButton,
   StyledDivider,
   StyledTabWarper,
-} from "../NavBar/NavBar.styles";
+} from "./NavBar.styles";
 
 import { TabLinks } from "./TabLinks";
 import { Footer } from "../Footer/Footer";

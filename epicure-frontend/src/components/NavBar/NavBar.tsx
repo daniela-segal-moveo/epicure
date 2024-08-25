@@ -4,7 +4,7 @@ import {
   StyledLogo,
   StyledIcon,
   StyledHamburger,
-} from "../NavBar/NavBar.styles";
+} from "./NavBar.styles";
 
 import { SideNavBarMenu } from "./SideNavBarMenu";
 
