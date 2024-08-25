@@ -12,7 +12,7 @@ export const ChefSchema: Schema = new mongoose.Schema({
   name: { type: String, required: true },
   bio: { type: String, required: true },
   imageUrl: { type: String, required: true },
-  restaurants: { type: [Schema.Types.ObjectId] },
+  restaurants: { type: [Schema.Types.ObjectId] , ref: "Restaurant"},
   createdAt: { type: Date, default: Date.now },
 });
 

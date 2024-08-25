@@ -16,10 +16,13 @@ export default {
     chefId = chefId.trim();
 
     try {
-      const chef = await Chef.findById(chefId);
+      const chef = await Chef.findById(chefId).populate('restaurants').exec();
       if (!chef) {
         throw new Error("Could not find dish");
       }
+
+      
+      console.log(chef)
       return chef;
     } catch (error) {
       console.error("Error finding chef:", error);
