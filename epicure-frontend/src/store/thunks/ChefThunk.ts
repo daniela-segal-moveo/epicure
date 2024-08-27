@@ -51,9 +51,10 @@ export const updateChef = createAsyncThunk(
 );
 export const deleteChef = createAsyncThunk(
   "chefs/deleteChef",
-  async (id: string): Promise<void> => {
+  async (id: string): Promise<Chef> => {
     try {
-      await ChefsAdapter.deleteChef(id);
+      const response = await ChefsAdapter.deleteChef(id);
+      return response;
     } catch (error: any) {
       throw new Error("error fetching data");
     }

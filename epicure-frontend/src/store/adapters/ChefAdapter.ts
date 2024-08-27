@@ -34,8 +34,9 @@ class ChefsAdapter {
     return res.data as Chef;
   }
 
-  static async deleteChef(id: string): Promise<void> {
-    await HttpClient.delete(ChefsAdapter.endpoint.deleteChef, id);
+  static async deleteChef(id: string): Promise<Chef> {
+    const res = await HttpClient.delete(ChefsAdapter.endpoint.deleteChef, id);
+    return res.data as Chef;
   }
 }
 
