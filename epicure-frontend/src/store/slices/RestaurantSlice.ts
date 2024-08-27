@@ -10,7 +10,7 @@ import {
 
 interface RestaurantState {
     restaurants: Restaurant[];
-  selectedRestaurant: Restaurant | null;
+  selectedRestaurant: string | null;
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
 }
@@ -43,7 +43,7 @@ const restaurantSlice = createSlice({
         state.status = "loading";
       })
       .addCase(getRestaurant.fulfilled, (state, action: any) => {
-        state.selectedRestaurant = action.payload;
+        state.selectedRestaurant = action.payload.id;
         state.status = "succeeded";
       })
       .addCase(getRestaurant.rejected, (state, action) => {
