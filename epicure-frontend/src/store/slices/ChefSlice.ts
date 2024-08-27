@@ -10,7 +10,7 @@ import {
 
 interface ChefState {
   chefs: Chef[];
-  selectedChef: Chef | null;
+  selectedChef: string | null;
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
 }
@@ -43,7 +43,7 @@ const chefSlice = createSlice({
         state.status = "loading";
       })
       .addCase(getChef.fulfilled, (state, action: any) => {
-        state.selectedChef = action.payload;
+        state.selectedChef = action.payload.id;
         state.status = "succeeded";
       })
       .addCase(getChef.rejected, (state, action) => {
