@@ -10,7 +10,7 @@ import {
 
 interface DishState {
   dishes: Dish[];
-  selectedDish: Dish | null;
+  selectedDish: string | null;
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
 }
@@ -43,7 +43,7 @@ const dishSlice = createSlice({
         state.status = "loading";
       })
       .addCase(getDish.fulfilled, (state, action: any) => {
-        state.selectedDish = action.payload;
+        state.selectedDish = action.payload.id;
         state.status = "succeeded";
       })
       .addCase(getDish.rejected, (state, action) => {
