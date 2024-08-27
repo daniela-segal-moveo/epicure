@@ -17,29 +17,45 @@ export const getAllChefs = createAsyncThunk(
 export const getChef = createAsyncThunk(
   "chefs/getChefById",
   async (id: string): Promise<Chef> => {
-    const response = await ChefsAdapter.getChef(id);
-    return response;
+    try {
+      const response = await ChefsAdapter.getChef(id);
+      return response;
+    } catch (error: any) {
+      throw new Error("error fetching data");
+    }
   }
 );
 
 export const addChef = createAsyncThunk(
   "chefs/addChef",
   async (newChef: Chef): Promise<Chef> => {
-    const response = await ChefsAdapter.addChef(newChef);
-    return response;
+    try {
+      const response = await ChefsAdapter.addChef(newChef);
+      return response;
+    } catch (error: any) {
+      throw new Error("error fetching data");
+    }
   }
 );
 
 export const updateChef = createAsyncThunk(
   "chefs/updateChef",
   async (updatedChef: Chef): Promise<Chef> => {
-    const response = await ChefsAdapter.updateChef(updatedChef);
-    return response;
+    try {
+      const response = await ChefsAdapter.updateChef(updatedChef);
+      return response;
+    } catch (error: any) {
+      throw new Error("error fetching data");
+    }
   }
 );
 export const deleteChef = createAsyncThunk(
   "chefs/deleteChef",
   async (id: string): Promise<void> => {
-    await ChefsAdapter.deleteChef(id);
+    try {
+      await ChefsAdapter.deleteChef(id);
+    } catch (error: any) {
+      throw new Error("error fetching data");
+    }
   }
 );
