@@ -58,6 +58,5 @@ export const deleteDish = createAsyncThunk(
     } catch (error: any) {
       throw new Error("error fetching data");
     }
-    // thunkAPI.dispatch(getRestaurants()); i will enter here func that will fetch resturants again --> delete dish id from resturants dishes attribute?
   }
 );
