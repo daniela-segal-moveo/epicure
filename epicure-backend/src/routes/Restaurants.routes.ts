@@ -1,6 +1,7 @@
 import express from "express";
 import {
   getAllRestaurants,
+  getPopularRestaurants,
   addRestaurants,
   updateRestaurant,
   getRestaurantById,
@@ -18,5 +19,7 @@ router.post("/add", addRestaurants);
 router.put("/update/:id", updateRestaurant);
 
 router.delete("/delete/:id", deleteRestaurant);
+
+router.get("/popular", getPopularRestaurants);
 
 export default router;

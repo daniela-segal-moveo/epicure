@@ -12,6 +12,16 @@ export const getAllDishes = async (req: Request, res: Response) => {
   }
 };
 
+export const getSignatureDishes = async (req: Request, res: Response) => {
+  try {
+    const restaurants = await DishesService.getSignatureDishes();
+    res.json(restaurants);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
+};
+
 export const getDishById = async (req: Request, res: Response) => {
   const { id: dishId } = req.params;
   try {

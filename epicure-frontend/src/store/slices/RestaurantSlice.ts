@@ -6,10 +6,12 @@ import {
   addRestaurant,
   updateRestaurant,
   deleteRestaurant,
+  getPopularRestaurants,
 } from "../thunks/RestaurantThunk";
 
 interface RestaurantState {
-    restaurants: Restaurant[];
+  restaurants: Restaurant[];
+  popularRestaurants: Restaurant[];
   selectedRestaurant: string | null;
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
@@ -17,6 +19,7 @@ interface RestaurantState {
 
 const initialState: RestaurantState = {
   restaurants: [],
+  popularRestaurants: [],
   selectedRestaurant: null,
   status: "idle",
   error: null,
@@ -47,6 +50,17 @@ const restaurantSlice = createSlice({
         state.status = "succeeded";
       })
       .addCase(getRestaurant.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message || "Unknown error";
+      })
+      .addCase(getPopularRestaurants.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(getPopularRestaurants.fulfilled, (state, action: any) => {
+        state.popularRestaurants = action.payload;
+        state.status = "succeeded";
+      })
+      .addCase(getPopularRestaurants.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message || "Unknown error";
       })

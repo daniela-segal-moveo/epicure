@@ -1,11 +1,20 @@
 import Dish from "../models/Dish.model";
 import { IDish } from "../models/Dish.model";
 import Restaurant from "../models/Restaurant.model";
-import { ObjectId } from 'mongoose';
+import { ObjectId } from "mongoose";
 export default {
   async getAll() {
     try {
       const dishes = await Dish.find();
+      return dishes;
+    } catch {
+      console.log("error fetching data");
+    }
+  },
+
+  async getSignatureDishes() {
+    try {
+      const dishes = await Dish.find({ isSignature: true });
       return dishes;
     } catch {
       console.log("error fetching data");

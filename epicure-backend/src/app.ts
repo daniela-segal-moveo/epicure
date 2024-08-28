@@ -6,7 +6,6 @@ import cors from "cors";
 import apiRouter from "./routes/index.routes";
 import mongoose from "mongoose";
 
-// Load environment variables
 dotenv.config();
 
 const app = express();
@@ -24,12 +23,16 @@ async function initializeDatabase() {
   }
 }
 
-
-// CORS configuration
 app.use(
   cors({
-    origin: 'http://localhost:5174', // Allowed origins
-    credentials: true, // Allow cookies and authorization headers
+    origin: (origin, callback) => {
+      if (!origin || origin.startsWith('http://localhost:')) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+    credentials: true,
   })
 );
 

@@ -11,72 +11,73 @@ import {
   StyledDesktopChefRestaurantContainer,
   StyledDesktopChefRestaurantWarper,
   StyledDesktopChefRestaurantsHeader,
-//   StyledSwiperSlide
+  //   StyledSwiperSlide
 } from "./ChefOfTheWeek.styles";
-import { epicureData } from "../../data";
 import { SpotlightSection } from "../SpotlightSection/SpotlightSection";
 import { Card } from "../Card/Card";
 import useWindowWidth from "../../hooks/useWindowWidth";
-import {StyledSwiperSlide} from "../SpotlightSection/SpotlightSection.styles"
+import { StyledSwiperSlide } from "../SpotlightSection/SpotlightSection.styles";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../store/store";
+import { useEffect } from "react";
+import { getWeekChef } from "../../store/thunks/ChefThunk";
 
 export const ChefOfTheWeek = () => {
   const isDesktop = useWindowWidth() >= 900;
+  const dispatch: AppDispatch = useDispatch();
+  const { weekChef, status } = useSelector((state: RootState) => state.chefs);
+
+  useEffect(() => {
+    if (status == "idle") {
+      dispatch(getWeekChef());
+    }
+  }, []);
   return (
     <StyledSection>
       <StyledChefHeader>CHEF OF THE WEEK:</StyledChefHeader>
       <StyledChefProfileWarper>
         <StyledImgWarper>
-          <StyledChefImg src={epicureData.chefOfTheWeek.imgUrl}></StyledChefImg>
+          <StyledChefImg src={weekChef?.imageUrl}></StyledChefImg>
           <StyledChefNameDiv>
-            <StyledchefName>{epicureData.chefOfTheWeek.name}</StyledchefName>
+            <StyledchefName>{weekChef?.name}</StyledchefName>
           </StyledChefNameDiv>
         </StyledImgWarper>
-        <StyledChefBio>{epicureData.chefOfTheWeek.bio}</StyledChefBio>
+        <StyledChefBio>{weekChef?.bio}</StyledChefBio>
       </StyledChefProfileWarper>
       <StyledChefsRestaurantsContainer>
         {isDesktop && (
           <StyledDesktopChefRestaurantWarper>
             <StyledDesktopChefRestaurantsHeader>{`${
-              epicureData.chefOfTheWeek.name.split(" ")[0]
+              weekChef?.name.split(" ")[0]
             }'s restaurants`}</StyledDesktopChefRestaurantsHeader>
             <StyledDesktopChefRestaurantContainer>
-              {epicureData.restaurants
-                .filter(
-                  (restaurant) =>
-                    restaurant.chef === epicureData.chefOfTheWeek.name
-                )
-                .map((restaurant) => (
-                  <Card
-                    key={restaurant.name}
-                    imgSrc={restaurant.imgUrl}
-                    header={restaurant.name}
-                    headerFontSize="30px"
-                  >
-                    {null}
-                  </Card>
-                ))}
+              {weekChef?.restaurants.map((restaurant) => (
+                <Card
+                  key={restaurant.name}
+                  imgSrc={restaurant.imageUrl}
+                  header={restaurant.name}
+                  headerFontSize="30px"
+                >
+                  {null}
+                </Card>
+              ))}
             </StyledDesktopChefRestaurantContainer>
           </StyledDesktopChefRestaurantWarper>
         )}
         {!isDesktop && (
           <SpotlightSection
             mainHeader={`${
-              epicureData.chefOfTheWeek.name.split(" ")[0]
+              weekChef?.name.split(" ")[0]
             }'s restaurants`.toLocaleUpperCase()}
           >
             {" "}
-            {epicureData.restaurants
-              .filter(
-                (restaurant) =>
-                  restaurant.chef === epicureData.chefOfTheWeek.name
-              )
-              .map((restaurant) => (
-                <StyledSwiperSlide key={restaurant.name}>
-                 <Card imgSrc={restaurant.imgUrl} header={restaurant.name}>
-                    {null}
-                 </Card>
-                </StyledSwiperSlide>
-              ))}
+            {weekChef?.restaurants.map((restaurant) => (
+              <StyledSwiperSlide key={restaurant.name}>
+                <Card imgSrc={restaurant.imageUrl} header={restaurant.name}>
+                  {null}
+                </Card>
+              </StyledSwiperSlide>
+            ))}
           </SpotlightSection>
         )}
       </StyledChefsRestaurantsContainer>

@@ -6,11 +6,13 @@ import {
   addChef,
   updateChef,
   deleteChef,
+  getWeekChef,
 } from "../thunks/ChefThunk";
 
 interface ChefState {
   chefs: Chef[];
   selectedChef: string | null;
+  weekChef: Chef | null;
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
 }
@@ -18,6 +20,7 @@ interface ChefState {
 const initialState: ChefState = {
   chefs: [],
   selectedChef: null,
+  weekChef: null,
   status: "idle",
   error: null,
 };
@@ -91,7 +94,17 @@ const chefSlice = createSlice({
       })
       .addCase(deleteChef.rejected, (state) => {
         state.status = "failed";
-      });
+      }).addCase(getWeekChef.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(getWeekChef.fulfilled, (state, action: any) => {
+        state.weekChef = action.payload;
+        state.status = "succeeded";
+      })
+      .addCase(getWeekChef.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message || "Unknown error";
+      })
   },
 });
 

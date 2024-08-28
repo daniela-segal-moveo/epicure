@@ -7,7 +7,6 @@ export const getAllRestaurants = createAsyncThunk(
   async (): Promise<Restaurant[]> => {
     try {
       const response = await RestaurantAdapter.getAllRestaurant();
-      console.log(response)
       return response;
     } catch (error: any) {
       throw new Error("error fetching data");
@@ -57,6 +56,18 @@ export const deleteRestaurant = createAsyncThunk(
   async (id: string): Promise<Restaurant> => {
     try {
       const response = await RestaurantAdapter.deleteRestaurant(id);
+      return response;
+    } catch (error: any) {
+      throw new Error("error fetching data");
+    }
+  }
+);
+
+export const getPopularRestaurants = createAsyncThunk(
+  "/getPopularRestaurants",
+  async (): Promise<Restaurant[]> => {
+    try {
+      const response = await RestaurantAdapter.getPopularRestaurants();
       return response;
     } catch (error: any) {
       throw new Error("error fetching data");

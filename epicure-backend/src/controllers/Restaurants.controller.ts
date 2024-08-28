@@ -12,6 +12,16 @@ export const getAllRestaurants = async (req: Request, res: Response) => {
   }
 };
 
+export const getPopularRestaurants = async (req: Request, res: Response) => {
+  try {
+    const restaurants = await RestaurantsService.getPopularRestaurants();
+    res.json(restaurants);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
+};
+
 export const getRestaurantById = async (req: Request, res: Response) => {
   const { id: restaurantId } = req.params;
   try {

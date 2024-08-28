@@ -17,6 +17,19 @@ export default {
     }
   },
 
+  async getPopularRestaurants() {
+    try {
+      const restaurants = await Restaurant.find({ isPopular: true })
+        .populate("chef")
+        .populate("dishes");
+        console.log(restaurants)
+      return restaurants;
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      throw new Error("Could not fetch restaurants");
+    }
+  },
+
   async getRestaurantById(restaurantId: string) {
     restaurantId = restaurantId.trim();
 

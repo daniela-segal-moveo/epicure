@@ -6,10 +6,12 @@ import {
   addDish,
   updateDish,
   deleteDish,
+  getSignatureDishes,
 } from "../thunks/DishThunk";
 
 interface DishState {
   dishes: Dish[];
+  signatureDishes: Dish[];
   selectedDish: string | null;
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
@@ -17,6 +19,7 @@ interface DishState {
 
 const initialState: DishState = {
   dishes: [],
+  signatureDishes: [],
   selectedDish: null,
   status: "idle",
   error: null,
@@ -36,6 +39,17 @@ const dishSlice = createSlice({
         state.status = "succeeded";
       })
       .addCase(getAllDishes.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message || "Unknown error";
+      })
+      .addCase(getSignatureDishes.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(getSignatureDishes.fulfilled, (state, action: any) => {
+        state.signatureDishes = action.payload;
+        state.status = "succeeded";
+      })
+      .addCase(getSignatureDishes.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message || "Unknown error";
       })

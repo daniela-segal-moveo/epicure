@@ -1,5 +1,6 @@
 import { Restaurant } from "../models/restaurant.model";
 import HttpClient from "../../services/HttpsClientService";
+import axios from "../../services/index";
 
 class RestaurantAdapter {
   static readonly endpoint = {
@@ -8,13 +9,13 @@ class RestaurantAdapter {
     updateRestaurant: "/api/restaurants/update",
     deleteRestaurant: "/api/restaurants/delete",
     addRestaurant: "/api/restaurants/add",
+    getPopularRestaurants: "/api/restaurants/popular"
   };
 
   static async getAllRestaurant(): Promise<Restaurant[]> {
     const res = await HttpClient.getAll(
       RestaurantAdapter.endpoint.getRestaurants
     );
-    console.log(res)
     return res;
   }
 
@@ -48,6 +49,13 @@ class RestaurantAdapter {
   static async deleteRestaurant(id: string): Promise<Restaurant> {
     const res = await HttpClient.delete(RestaurantAdapter.endpoint.deleteRestaurant, id);
     return res.data as Restaurant;
+  }
+
+  static async getPopularRestaurants(): Promise<Restaurant[]> {
+    const res = await axios.get(
+      RestaurantAdapter.endpoint.getPopularRestaurants
+    );
+    return res.data;
   }
 }
 

@@ -8,8 +8,8 @@ import {
 
 import { SideNavBarMenu } from "./SideNavBarMenu";
 
-import LogoImg from "../../assets/images/epicureLogo.png";
-import DesktopLogoImg from "../../assets/images/logo.svg";
+import LogoImg from "../../../public/assets/images/epicureLogo.png";
+import DesktopLogoImg from "../../../public/assets/images/logo.svg";
 import PersonIcon from "../../assets/icons/Person.svg";
 import SearchIcon from "../../assets/icons/Search.svg";
 import BagIcon from "../../assets/icons/Bag.svg";

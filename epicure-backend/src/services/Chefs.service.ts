@@ -27,6 +27,19 @@ export default {
     }
   },
 
+  async getWeekChef() {
+    try {
+      const chef = await Chef.findOne({isWeekChef: true}).populate('restaurants').exec();
+      if (!chef) {
+        throw new Error("Could not find dish");
+      }
+      return chef;
+    } catch (error) {
+      console.error("Error finding chef:", error);
+      throw new Error("Could not find chef");
+    }
+  },
+
   async addChef(chefData: IChef) {
     try {
       const newChef = new Chef(chefData);

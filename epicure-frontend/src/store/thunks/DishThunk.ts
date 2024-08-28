@@ -7,8 +7,6 @@ export const getAllDishes = createAsyncThunk(
   async (): Promise<Dish[]> => {
     try {
       const response = await DishesAdapter.getAllDishes();
-      console.log(response)
-      console.log("-------------------")
       return response;
     } catch (error: any) {
       throw new Error("error fetching data");
@@ -53,13 +51,24 @@ export const updateDish = createAsyncThunk(
 );
 export const deleteDish = createAsyncThunk(
   "dishes/deleteDish",
-  async (id: string, thunkAPI): Promise<Dish> => {
+  async (id: string): Promise<Dish> => {
     try {
       const response = await DishesAdapter.deleteDish(id);
       return response;
     } catch (error: any) {
       throw new Error("error fetching data");
     }
-    // thunkAPI.dispatch(getRestaurants()); i will enter here func that will fetch resturants again --> delete dish id from resturants dishes attribute?
+  }
+);
+
+export const getSignatureDishes = createAsyncThunk(
+  "dishes/signature",
+  async (): Promise<Dish[]> => {
+    try {
+      const response = await DishesAdapter.getSignatureDishes();
+      return response;
+    } catch (error: any) {
+      throw new Error("error fetching data");
+    }
   }
 );

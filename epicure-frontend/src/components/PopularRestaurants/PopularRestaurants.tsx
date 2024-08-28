@@ -7,24 +7,22 @@ import { Card } from "../Card/Card";
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from "../../store/store"
 import { useEffect } from "react";
-import { getAllRestaurants } from "../../store/thunks/RestaurantThunk";
+import {getPopularRestaurants } from "../../store/thunks/RestaurantThunk";
 
 export const PopularRestaurants = () => {
   const isDesktop = useWindowWidth() >=900;
   const dispatch: AppDispatch = useDispatch();
-  const { restaurants, status } = useSelector((state: RootState) => state.restaurants);
+  const { popularRestaurants, status } = useSelector((state: RootState) => state.restaurants);
 
   useEffect(() => {
     if (status === "idle") {
-      dispatch(getAllRestaurants());
+      dispatch(getPopularRestaurants());
     }
-    console.log(restaurants)
   }, [dispatch, status]);
 
   return (
     <SpotlightSection mainHeader="popular restaurant in epicure:">
-      {restaurants && restaurants
-        .filter((restaurant) => restaurant.isPopular)
+      {popularRestaurants && popularRestaurants
         .map((restaurant) => (
           <StyledSwiperSlide key={restaurant.name}>
             <Card imgSrc={restaurant.imageUrl} header={restaurant.name}>

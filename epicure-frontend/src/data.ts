@@ -1,10 +1,10 @@
-import ClaroImg from "./assets/images/claro.svg";
-import LumiaImg from "./assets/images/luima.jpg";
-import OnazaImg from "./assets/images/screen-shot-2019-01-06-at-10-55-45@3x 1.svg";
-import MashyaImg from "./assets/images/mashya.png";
-import Hero from "./assets/images/hero-picture 1.svg";
-import pizzaImg from "./assets/images/pizza.svg";
-import chefImg from "./assets/images/chef.svg";
+import ClaroImg from "../public/assets/images/claro.svg";
+import LumiaImg from "../public/assets/images/luima.jpg";
+import OnazaImg from "../public/assets/images/screen-shot-2019-01-06-at-10-55-45@3x 1.svg";
+import MashyaImg from "../public/assets/images/mashya.png";
+import Hero from "../public/assets/images/hero-picture 1.svg";
+import pizzaImg from "../public/assets/images/pizza.svg";
+import chefImg from "../public/assets/images/chef.svg";
 
 export const epicureData = {
   hero: {

@@ -1,5 +1,6 @@
 import { Chef } from "../models/chef.model";
 import HttpClient from "../../services/HttpsClientService";
+import axios from "../../services/index";
 
 class ChefsAdapter {
   static readonly endpoint = {
@@ -8,6 +9,7 @@ class ChefsAdapter {
     updateChef: "/api/chefs/update",
     deleteChef: "/api/chefs/delete",
     addChef: "/api/chefs/add",
+    getWeekChef: "api/chefs/weekChef",
   };
 
   static async getAllChefs(): Promise<Chef[]> {
@@ -37,6 +39,18 @@ class ChefsAdapter {
   static async deleteChef(id: string): Promise<Chef> {
     const res = await HttpClient.delete(ChefsAdapter.endpoint.deleteChef, id);
     return res.data as Chef;
+  }
+
+  static async getWeekChef() : Promise<Chef>
+  {
+    const res = await axios.get(ChefsAdapter.endpoint.getWeekChef)
+    return res.data as Chef;
+  }
+
+  static async updateChefOfTheWeek(id: string) : Promise<string>
+  {
+    const res = await axios.post(`${ChefsAdapter.endpoint.getWeekChef}/${id}` )
+    return res.data as string;
   }
 }
 
