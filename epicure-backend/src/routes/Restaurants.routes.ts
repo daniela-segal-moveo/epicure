@@ -11,12 +11,12 @@ const router = express.Router();
 
 router.get("/", getAllRestaurants);
 
-router.put("/getRestaurant/:id", getRestaurantById);
+router.put("/get/:id", getRestaurantById);
 
-router.post("/addRestaurant", addRestaurants);
+router.post("/add", addRestaurants);
 
-router.put("/updateRestaurant/:id", updateRestaurant);
+router.put("/update/:id", updateRestaurant);
 
-router.delete("/deleteRestaurants/:id", deleteRestaurant);
+router.delete("/delete/:id", deleteRestaurant);
 
 export default router;

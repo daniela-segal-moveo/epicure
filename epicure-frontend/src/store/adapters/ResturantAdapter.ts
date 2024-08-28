@@ -14,7 +14,8 @@ class RestaurantAdapter {
     const res = await HttpClient.getAll(
       RestaurantAdapter.endpoint.getRestaurants
     );
-    return res.data as Restaurant[];
+    console.log(res)
+    return res;
   }
 
   static async getRestaurant(id: string): Promise<Restaurant> {

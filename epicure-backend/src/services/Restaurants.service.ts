@@ -7,7 +7,9 @@ import Restaurant from "../models/Restaurant.model";
 export default {
   async getAll() {
     try {
-      const restaurants = await Restaurant.find();
+      const restaurants = await Restaurant.find()
+        .populate("chef")
+        .populate("dishes");
       return restaurants;
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -19,7 +21,9 @@ export default {
     restaurantId = restaurantId.trim();
 
     try {
-      const restaurant = await Restaurant.findById(restaurantId);
+      const restaurant = await Restaurant.findById(restaurantId)
+        .populate("chef")
+        .populate("dishes");
       if (!restaurant) {
         throw new Error("Could not find restaurant");
       }
@@ -34,7 +38,11 @@ export default {
     try {
       const newRestaurant = new Restaurant(restaurantData);
       await newRestaurant.save();
-      return newRestaurant;
+      const populatedRestaurant = await Restaurant.findById(newRestaurant._id)
+        .populate("chef")
+        .populate("dishes");
+
+      return populatedRestaurant;
     } catch (error) {
       console.error("Error inserting restaurant:", error);
       throw new Error("Could not insert restaurant");
@@ -63,7 +71,9 @@ export default {
         restaurantId,
         { $set: updateData },
         { new: true, runValidators: true }
-      );
+      )
+        .populate("chef")
+        .populate("dishes");
 
       return updatedRestaurant;
     } catch (error) {
@@ -76,9 +86,9 @@ export default {
     restaurantId = restaurantId.trim();
 
     try {
-      const deletedRestaurant = await Restaurant.findByIdAndDelete(
-        restaurantId
-      );
+      const deletedRestaurant = await Restaurant.findByIdAndDelete(restaurantId)
+        .populate("chef")
+        .populate("dishes");
 
       if (!deletedRestaurant) {
         throw new Error("Restaurant not found");

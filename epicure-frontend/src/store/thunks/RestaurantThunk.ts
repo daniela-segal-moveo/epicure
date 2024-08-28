@@ -7,6 +7,7 @@ export const getAllRestaurants = createAsyncThunk(
   async (): Promise<Restaurant[]> => {
     try {
       const response = await RestaurantAdapter.getAllRestaurant();
+      console.log(response)
       return response;
     } catch (error: any) {
       throw new Error("error fetching data");

@@ -7,6 +7,8 @@ export const getAllDishes = createAsyncThunk(
   async (): Promise<Dish[]> => {
     try {
       const response = await DishesAdapter.getAllDishes();
+      console.log(response)
+      console.log("-------------------")
       return response;
     } catch (error: any) {
       throw new Error("error fetching data");

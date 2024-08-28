@@ -9,6 +9,6 @@ const apiRouter = express.Router({
 
 apiRouter.use("/dishes", DishesRouter);
 apiRouter.use("/chefs", ChefsRouter)
-apiRouter.use("/Restuarants",RestaurantsRouter)
+apiRouter.use("/restaurants",RestaurantsRouter)
 
 export default apiRouter;

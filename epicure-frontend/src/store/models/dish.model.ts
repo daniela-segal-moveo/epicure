@@ -6,6 +6,7 @@ export interface Dish {
   imageUrl: string;
   price: number;
   isSignature: boolean;
+  category: string[];
   restaurantId: string;
   createdAt: Date;
 }

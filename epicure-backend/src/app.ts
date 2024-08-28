@@ -28,7 +28,7 @@ async function initializeDatabase() {
 // CORS configuration
 app.use(
   cors({
-    origin: ["http://localhost:3000", "http://172.20.10.2:3000"], // Allowed origins
+    origin: 'http://localhost:5174', // Allowed origins
     credentials: true, // Allow cookies and authorization headers
   })
 );

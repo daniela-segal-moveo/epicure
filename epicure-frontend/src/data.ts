@@ -18,7 +18,7 @@ export const epicureData = {
       chef: "Ran Shmueli",
       isPopular: true,
       stars: 5,
-      imgUrl: ClaroImg,
+      imgUrl: "./assets/images/claro.svg",
     },
     {
       name: "Lumina",

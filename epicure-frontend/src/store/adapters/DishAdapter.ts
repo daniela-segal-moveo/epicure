@@ -12,7 +12,7 @@ class DishesAdapter {
 
   static async getAllDishes(): Promise<Dish[]> {
     const res = await HttpClient.getAll(DishesAdapter.endpoint.getDishes);
-    return res.data as Dish[];
+    return res as Dish[];
   }
 
   static async getDish(id: string): Promise<Dish> {

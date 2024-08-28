@@ -5,12 +5,12 @@ const router = express.Router();
 
 router.get('/', getAllChefs);
 
-router.get('/getChef/:id', getChefById)
+router.get('/get/:id', getChefById)
 
-router.post('/addChef', addChef);
+router.post('/add', addChef);
 
-router.put('/updateChef/:id', updateChef);
+router.put('/update/:id', updateChef);
 
-router.delete('/deleteChef/:id', deleteChef);
+router.delete('/delete/:id', deleteChef);
 
 export default router;

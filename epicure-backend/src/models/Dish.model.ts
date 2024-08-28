@@ -7,6 +7,7 @@ export interface IDish extends Document {
   imageUrl: string;
   price: number;
   isSignature: boolean;
+  category: string[];
   restaurantId: Schema.Types.ObjectId;
   createdAt: Date;
 }
@@ -18,6 +19,7 @@ const DishSchema: Schema = new mongoose.Schema({
   imageUrl: { type: String, required: true },
   price: { type: Number, required: true },
   isSignature: { type: Boolean, required: true },
+  catagory: { type: [String], required: true },
   restaurantId: {
     type: Schema.Types.ObjectId,
   },
