@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Swiper, SwiperSlide } from "swiper/react";
+import {SwiperSlide } from "swiper/react";
 
 export const StyledSection = styled.section`
   flex-direction: column;

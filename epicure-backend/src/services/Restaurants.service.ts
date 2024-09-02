@@ -22,7 +22,6 @@ export default {
       const restaurants = await Restaurant.find({ isPopular: true })
         .populate("chef")
         .populate("dishes");
-        console.log(restaurants)
       return restaurants;
     } catch (error) {
       console.error("Error fetching data:", error);

@@ -57,8 +57,16 @@ const chefSlice = createSlice({
         state.status = "loading";
       })
       .addCase(addChef.fulfilled, (state, action: any) => {
-        state.chefs.push(action.payload);
-        state.status = "succeeded";
+        const newChef = action.payload as Chef;
+        // Ensure newChef has the correct structure
+        if (newChef && newChef._id) {
+          // Replace the entire array with the updated list
+          state.chefs = [...state.chefs, newChef];
+          state.status = 'succeeded';
+        } else {
+          console.error('Invalid chef data:', newChef);
+          state.status = 'failed';
+        }
       })
       .addCase(addChef.rejected, (state, action) => {
         state.status = "failed";
@@ -69,7 +77,7 @@ const chefSlice = createSlice({
       })
       .addCase(updateChef.fulfilled, (state, action: any) => {
         const index = state.chefs.findIndex(
-          (chef) => chef.id === action.payload.id
+          (chef) => chef._id === action.payload._id
         );
         if (index !== -1) {
           state.chefs[index] = action.payload;
@@ -85,7 +93,7 @@ const chefSlice = createSlice({
       })
       .addCase(deleteChef.fulfilled, (state, action: any) => {
         const index = state.chefs.findIndex(
-          (chef) => chef.id === action.payload.id
+          (chef) => chef._id === action.payload._id
         );
         if (index !== -1) {
           state.chefs.splice(index, 1);
