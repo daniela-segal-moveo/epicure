@@ -2,23 +2,23 @@ import { useEffect, useState } from "react";
 import { GridColDef } from "@mui/x-data-grid";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../../store/store";
-import {
-  addChef,
-  deleteChef,
-  getAllChefs,
-  updateChef,
-} from "../../../../store/thunks/ChefThunk";
 import { IconButton } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
-import EditChefModel from "./EditChefModel/EditChefModel";
 import {
   StyledAddButton,
   StyledProfileImgDiv,
   StyledProfileImg,
   StyledDataGrid,
-} from "../DataTable/DataTable.styles"
+} from "../DataTable/DataTable.styles";
+import {
+  addRestaurant,
+  deleteRestaurant,
+  getAllRestaurants,
+  updateRestaurant,
+} from "../../../../store/thunks/RestaurantThunk";
+import { RestaurantModal } from "./RestaurantModal/RestuarantModal";
 
 // Define columns based on Chef model properties
 const createColumns = (
@@ -51,25 +51,35 @@ const createColumns = (
     ),
   },
   { field: "name", headerName: "Name", width: 140 },
-  { field: "bio", headerName: "Bio", width: 150 },
   {
-    field: "restaurants",
-    headerName: "Restaurants",
-    width: 160,
+    field: "chef",
+    headerName: "Chef",
+    width: 180,
+    renderCell: (params) => params.value?.name || "No Chef", // Adjust this as needed
+  },
+  {
+    field: "dishes",
+    headerName: "Dishes",
+    width: 200,
     renderCell: (params) => {
-      return (params.value as { name: string }[])
-        .map((restaurant) => restaurant.name)
-        .join(", ");
+      const dishes = params.value as { name: string }[];
+      return dishes ? dishes.map((dish) => dish.name).join(", ") : "";
     },
   },
   {
-    field: "isWeekChef",
-    headerName: "Is Week Chef",
-    width: 150,
+    field: "isPopular",
+    headerName: "Is Popular",
     type: "boolean",
+    cellClassName: "justify-center",
   },
   {
-    field: "createdAt", // The field for creation date
+    field: "stars",
+    headerName: "Stars",
+    type: "number",
+    cellClassName: "justify-center",
+  },
+  {
+    field: "createdAt",
     headerName: "Created At",
     width: 180,
     type: "dateTime",
@@ -79,7 +89,8 @@ const createColumns = (
   {
     field: "delete",
     headerName: "",
-    width: 100,
+    flex: 1,
+    cellClassName: "justify-center",
     renderCell: (params) => (
       <IconButton onClick={() => onDelete(params.row.id)}>
         <DeleteIcon />
@@ -88,55 +99,59 @@ const createColumns = (
   },
 ];
 
-export const ChefTable = () => {
-  const handleDeleteChef = async (id: string) => {
+export const RestaurantTable = () => {
+  const handleDeleteRestaurant = async (id: string) => {
     try {
-      await dispatch(deleteChef(id)); // Call the delete action with the chef id
+      await dispatch(deleteRestaurant(id));
     } catch (error) {
       console.error("Error deleting chef:", error);
     }
   };
 
   const handleEditChef = (id: string) => {
-    const chefToEdit = chefs.find((chef) => chef._id === id);
-    if (chefToEdit) {
-      setSelectedChef(chefToEdit);
+    const restaurantToEdit = restaurants.find(
+      (restaurant) => restaurant._id === id
+    );
+    if (restaurantToEdit) {
+      setSelectedRestaurant(restaurantToEdit);
       setModalMode("edit");
       setModalOpen(true);
     }
   };
 
   const dispatch: AppDispatch = useDispatch();
-  const { chefs, status } = useSelector((state: RootState) => state.chefs);
+  const { restaurants, status } = useSelector(
+    (state: RootState) => state.restaurants
+  );
   const [columns, setColumns] = useState<GridColDef[]>(
-    createColumns(handleDeleteChef, handleEditChef)
+    createColumns(handleDeleteRestaurant, handleEditChef)
   );
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [modalMode, setModalMode] = useState<"add" | "edit">("add");
-  const [selectedChef, setSelectedChef] = useState<any>();
+  const [selectedRestaurant, setSelectedRestaurant] = useState<any>();
 
   useEffect(() => {
     if (status === "idle") {
-      dispatch(getAllChefs());
+      dispatch(getAllRestaurants());
     }
   }, [dispatch, status]);
 
   useEffect(() => {
-    if (chefs.length > 0) {
-      setColumns(createColumns(handleDeleteChef, handleEditChef));
+    if (restaurants.length > 0) {
+      setColumns(createColumns(handleDeleteRestaurant, handleEditChef));
     }
-  }, [chefs]);
+  }, [restaurants]);
 
   const handleAddChef = async (newChef: any) => {
     try {
       if (modalMode == "add") {
-        await dispatch(addChef(newChef));
+        await dispatch(addRestaurant(newChef));
       } else {
-        await dispatch(updateChef(newChef));
+        await dispatch(updateRestaurant(newChef));
       }
       setModalOpen(false);
     } catch (error) {
-      console.error("Error adding chef:", error);
+      console.error("Error adding Restaurant:", error);
     }
   };
 
@@ -144,16 +159,15 @@ export const ChefTable = () => {
     return <div>Loading...</div>;
   }
 
-  if (status === "succeeded" && chefs.length === 0) {
+  if (status === "succeeded" && restaurants.length === 0) {
     return <div>No chefs available</div>;
   }
 
-  // Transform data to ensure consistency
-  const transformedChefs = chefs?.map((chef) => {
-    return {
-      id: chef._id,
-      ...chef,
-    };
+  const transformedRestaurants = restaurants?.map((restaurant) => {
+      return {
+        id: restaurant._id,
+        ...restaurant,
+      };
   });
 
   return (
@@ -166,26 +180,26 @@ export const ChefTable = () => {
           setModalOpen(true);
         }}
       >
-        Add Chef
+        Add Restaurant
       </StyledAddButton>
-      {transformedChefs && columns.length > 0 && (
+      {transformedRestaurants && columns.length > 0 && (
         <StyledDataGrid
-          rows={transformedChefs}
+          rows={transformedRestaurants}
           columns={columns}
           pageSize={20}
           rowsPerPageOptions={[20]}
-          getRowId={(row) => row.id} // Ensure correct ID assignment
+          getRowId={(row) => row.id}
           initialState={{
             sorting: { sortModel: [{ field: "createdAt", sort: "desc" }] },
           }}
         />
       )}
-      <EditChefModel
+      <RestaurantModal
         open={modalOpen}
         onSubmit={handleAddChef}
         onClose={() => setModalOpen(false)}
         mode={modalMode}
-        chefToEdit={modalMode === "edit" ? selectedChef : undefined}
+        RestaurantToEdit={modalMode === "edit" ? selectedRestaurant : undefined}
       />
     </div>
   );

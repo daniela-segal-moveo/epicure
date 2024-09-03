@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import AddIcon from "@mui/icons-material/Add";
-import { StyledBox, StyledModal } from "./EditChefModel.styles";
+import { StyledBox, StyledModal } from "../../DataTable/Modal/Modal.styles";
 
 interface EditChefModelProps {
   open: boolean;

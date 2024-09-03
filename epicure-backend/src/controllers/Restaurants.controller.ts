@@ -36,8 +36,8 @@ export const addRestaurants = async (req: Request, res: Response) => {
   const restaurant: IRestaurant = req.body;
 
   try {
-    await RestaurantsService.addRestaurant(restaurant);
-    res.status(201).json("Restaurant added");
+    const newRestaurant = await  RestaurantsService.addRestaurant(restaurant);
+    res.status(201).json(newRestaurant);
   } catch (error) {
     console.error(error);
     res.status(500).send("Internal Server Error");

@@ -6,7 +6,7 @@ export const StyledAddButton = styled(Button)({
   marginBottom: "16px",
   backgroundColor: "#132442",
   display: "flex",
-  alignItems: "flex-end"
+  alignItems: "flex-end",
 });
 
 export const StyledProfileImgDiv = styled("div")({
@@ -26,27 +26,48 @@ export const StyledProfileImg = styled("img")({
 });
 
 export const StyledDataGridContainer = styled(Box)({
-  width: 'max-content', // Container width based on content
-  overflowX: 'auto', // Handle horizontal overflow
+  width: "max-content",
+  overflowX: "auto",
 });
 
 export const StyledDataGrid = styled(DataGrid)({
-    maxWidth: "850px",
   "& .MuiDataGrid-cell": {
+    display: "flex",
+    justifyContent: "flex-start",
     padding: "8px",
   },
   "& .MuiDataGrid-columnHeader": {
     backgroundColor: "#132442",
     color: "white",
     fontWeight: "bold",
+    padding: "8px",
+    justifyContent: "flex-start",
+  },
+  "& .MuiDataGrid-columnHeaderTitle": {
+    display: "flex",
+    justifyContent: "flex-start",
+  },
+  "& .MuiDataGrid-menuIcon": {
+    display: "none",
+  },
+  "& .MuiDataGrid-filterIcon": {
+    display: "none",
+  },
+  "& .MuiDataGrid-columnHeaderTitleContainer": {
+    display: "flex",
+    justifyContent: "flex-start !important",
+    flexDirection: "row !important",
   },
   "& .MuiDataGrid-footerContainer": {
     borderTop: "1px solid #e0e0e0",
   },
   "& .MuiDataGrid-viewport": {
-    overflowX: "auto", // Ensure horizontal overflow handling
+    overflowX: "auto",
   },
   "& .MuiDataGrid-root": {
-    overflowX: "hidden", // Prevent extra horizontal scrolling
+    overflowX: "hidden",
+  },
+  "& .justify-center": {
+    justifyContent: 'center', // Center alignment for specific columns
   },
 });

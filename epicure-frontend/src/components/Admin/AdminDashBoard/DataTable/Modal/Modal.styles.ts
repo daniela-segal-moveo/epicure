@@ -2,10 +2,12 @@ import {styled} from "@mui/system"
 import {Modal, Box} from "@mui/material"
 
 export const StyledModal = styled(Modal)({
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  });
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  height: "auto", 
+  width: "auto", 
+});
   
 export const StyledBox = styled(Box)({
     display: "flex",

@@ -24,7 +24,7 @@ class RestaurantAdapter {
       RestaurantAdapter.endpoint.getRestaurantById,
       id
     );
-    return res.data as Restaurant;
+    return res as Restaurant;
   }
 
   static async addRestaurant(newRestaurant: Restaurant): Promise<Restaurant> {
@@ -32,7 +32,7 @@ class RestaurantAdapter {
       `${RestaurantAdapter.endpoint.addRestaurant}`,
       newRestaurant
     );
-    return res.data as Restaurant;
+    return res as Restaurant;
   }
 
   static async updateRestaurant(
@@ -40,15 +40,15 @@ class RestaurantAdapter {
   ): Promise<Restaurant> {
     const res = await HttpClient.update(
       RestaurantAdapter.endpoint.updateRestaurant,
-      updatedRestaurant.id,
+      updatedRestaurant._id,
       updatedRestaurant
     );
-    return res.data as Restaurant;
+    return res as Restaurant;
   }
 
   static async deleteRestaurant(id: string): Promise<Restaurant> {
     const res = await HttpClient.delete(RestaurantAdapter.endpoint.deleteRestaurant, id);
-    return res.data as Restaurant;
+    return res as Restaurant;
   }
 
   static async getPopularRestaurants(): Promise<Restaurant[]> {

@@ -2,7 +2,7 @@ import { Chef } from "./chef.model"; // Adjust the import path as needed
 import { Dish } from "./dish.model"; // Adjust the import path as needed
 
 export interface Restaurant {
-  id: string;
+  _id: string;
   name: string;
   imageUrl: string;
   chef?: Chef; // Updated to reflect that it's a full Chef object, not just an ID
