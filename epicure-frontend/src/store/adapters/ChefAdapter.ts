@@ -45,11 +45,6 @@ class ChefsAdapter {
     const res = await axios.get(ChefsAdapter.endpoint.getWeekChef);
     return res.data as Chef;
   }
-
-  static async updateChefOfTheWeek(id: string): Promise<string> {
-    const res = await axios.post(`${ChefsAdapter.endpoint.getWeekChef}/${id}`);
-    return res.data as string;
-  }
 }
 
 export default ChefsAdapter;

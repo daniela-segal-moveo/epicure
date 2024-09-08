@@ -30,7 +30,7 @@ class DishesAdapter {
   static async updateDish(updatedDish: Dish): Promise<Dish> {
     const res = await HttpClient.update(
       DishesAdapter.endpoint.updateDish,
-      updatedDish.id,
+      updatedDish._id,
       updatedDish
     );
     return res.data as Dish;
