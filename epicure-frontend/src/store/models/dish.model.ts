@@ -1,5 +1,6 @@
+import { Restaurant } from "./restaurant.model";
 export interface Dish {
-  id: string;
+  _id: string;
   name: string;
   ingredients: string[];
   description: string;
@@ -7,6 +8,6 @@ export interface Dish {
   price: number;
   isSignature: boolean;
   category: string[];
-  restaurantId: string;
+  restaurantId: Restaurant;
   createdAt: Date;
 }

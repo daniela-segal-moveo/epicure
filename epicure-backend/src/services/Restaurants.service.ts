@@ -54,6 +54,13 @@ export default {
         .populate("chef")
         .populate("dishes");
 
+      console.log(restaurantData.chef)
+
+      await Chef.updateOne(
+        { _id: restaurantData.chef, restaurants: { $ne: populatedRestaurant?._id } }, 
+        { $addToSet: { restaurants: populatedRestaurant?._id } } 
+      ).exec();
+
       return populatedRestaurant;
     } catch (error) {
       console.error("Error inserting restaurant:", error);
@@ -63,6 +70,12 @@ export default {
 
   async updateRestaurant(restaurantId: string, updateData: IRestaurant) {
     restaurantId = restaurantId.trim();
+
+    const existingRestaurant = await Restaurant.findById(restaurantId).exec();
+    if (!existingRestaurant) throw new Error("Restaurant not found");
+
+    const oldChefId = existingRestaurant.chef;
+    const newChefId = updateData.chef;
 
     try {
       if (updateData.chef) {
@@ -87,6 +100,16 @@ export default {
         .populate("chef")
         .populate("dishes");
 
+        await Chef.updateOne(
+          { _id: oldChefId },
+          { $pull: { restaurants: restaurantId } } 
+        ).exec();
+  
+        await Chef.updateOne(
+          { _id: updateData.chef, restaurants: { $ne: restaurantId } }, 
+          { $addToSet: { restaurants: restaurantId } } 
+        ).exec();
+
       return updatedRestaurant;
     } catch (error) {
       console.error("Error updating restaurant:", error);
@@ -106,15 +129,17 @@ export default {
         throw new Error("Restaurant not found");
       }
 
+      console.log(restaurantId)
+
       await Chef.updateMany(
         { restaurants: restaurantId },
         { $pull: { restaurants: restaurantId } }
       );
 
       await Dish.updateMany(
-        { restaurants: restaurantId },
-        { $pull: { restaurants: restaurantId } }
-      );
+        { restaurantId: restaurantId },
+        { $unset: { restaurantId: "" } }
+    );
 
       return deletedRestaurant;
     } catch (error) {
