@@ -51,9 +51,21 @@ export const updateDish = createAsyncThunk(
 );
 export const deleteDish = createAsyncThunk(
   "dishes/deleteDish",
-  async (id: string, thunkAPI): Promise<Dish> => {
+  async (id: string): Promise<Dish> => {
     try {
       const response = await DishesAdapter.deleteDish(id);
+      return response;
+    } catch (error: any) {
+      throw new Error("error fetching data");
+    }
+  }
+);
+
+export const getSignatureDishes = createAsyncThunk(
+  "dishes/signature",
+  async (): Promise<Dish[]> => {
+    try {
+      const response = await DishesAdapter.getSignatureDishes();
       return response;
     } catch (error: any) {
       throw new Error("error fetching data");

@@ -62,3 +62,15 @@ export const deleteRestaurant = createAsyncThunk(
     }
   }
 );
+
+export const getPopularRestaurants = createAsyncThunk(
+  "/getPopularRestaurants",
+  async (): Promise<Restaurant[]> => {
+    try {
+      const response = await RestaurantAdapter.getPopularRestaurants();
+      return response;
+    } catch (error: any) {
+      throw new Error("error fetching data");
+    }
+  }
+);

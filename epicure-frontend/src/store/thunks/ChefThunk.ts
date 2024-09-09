@@ -60,3 +60,14 @@ export const deleteChef = createAsyncThunk(
     }
   }
 );
+export const getWeekChef = createAsyncThunk(
+  "chefs/getWeekChef",
+  async (): Promise<Chef> => {
+    try {
+      const response = await ChefsAdapter.getWeekChef();
+      return response;
+    } catch (error: any) {
+      throw new Error("error fetching data");
+    }
+  }
+);

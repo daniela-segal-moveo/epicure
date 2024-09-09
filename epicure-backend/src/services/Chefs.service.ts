@@ -4,7 +4,7 @@ import Restaurant from "../models/Restaurant.model";
 export default {
   async getAll() {
     try {
-      const chefs = await Chef.find();
+      const chefs = await Chef.find().populate('restaurants');
       return chefs;
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -27,11 +27,24 @@ export default {
     }
   },
 
+  async getWeekChef() {
+    try {
+      const chef = await Chef.findOne({isWeekChef: true}).populate('restaurants').exec();
+      if (!chef) {
+        throw new Error("Could not find dish");
+      }
+      return chef;
+    } catch (error) {
+      console.error("Error finding chef:", error);
+      throw new Error("Could not find chef");
+    }
+  },
+
   async addChef(chefData: IChef) {
     try {
       const newChef = new Chef(chefData);
       await newChef.save();
-      return newChef;
+      return newChef.populate('restaurants');
     } catch (error) {
       console.error("Error inserting chef:", error);
       throw new Error("Could not insert chef");
@@ -58,7 +71,7 @@ export default {
         { new: true, runValidators: true }
       );
 
-      return updatedChef;
+      return updatedChef?.populate('restaurants');
     } catch (error) {
       console.error("Error updating chef:", error);
       throw new Error("Could not update chef");

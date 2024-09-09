@@ -23,6 +23,16 @@ export const getChefById = async (req: Request, res: Response) => {
   }
 };
 
+export const getWeekChef = async (req: Request, res: Response) => {
+  try {
+    const chef = await ChefsService.getWeekChef();
+    res.json(chef);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
+};
+
 export const addChef = async (req: Request, res: Response) => {
   const chef: IChef = req.body;
 

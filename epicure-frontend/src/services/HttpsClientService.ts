@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "./";
 
 class HttpClient {
   static async getAll(resource: string) {

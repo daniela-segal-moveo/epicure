@@ -1,11 +1,23 @@
 import Dish from "../models/Dish.model";
 import { IDish } from "../models/Dish.model";
 import Restaurant from "../models/Restaurant.model";
-import { ObjectId } from 'mongoose';
+import { ObjectId } from "mongoose";
 export default {
   async getAll() {
     try {
-      const dishes = await Dish.find();
+      const dishes = await Dish.find().populate("restaurantId");
+      console.log(dishes);
+      return dishes;
+    } catch {
+      console.log("error fetching data");
+    }
+  },
+
+  async getSignatureDishes() {
+    try {
+      const dishes = await Dish.find({ isSignature: true }).populate(
+        "restaurantId"
+      );
       return dishes;
     } catch {
       console.log("error fetching data");
@@ -28,6 +40,7 @@ export default {
   },
 
   async addDish(dishData: IDish) {
+    console.log(dishData);
     try {
       const newDish = new Dish(dishData);
       const savedDish: IDish = await newDish.save();
@@ -44,7 +57,7 @@ export default {
           );
         }
       }
-      return newDish;
+      return newDish.populate("restaurantId");
     } catch (error) {
       console.error("Error inserting dish:", error);
       throw new Error("Could not insert dish");
@@ -53,6 +66,13 @@ export default {
 
   async updateDish(dishId: string, updateData: IDish) {
     dishId = dishId.trim();
+    console.log(updateData);
+
+    const existingDish = await Dish.findById(dishId).exec();
+    if (!existingDish) throw new Error("Dish not found");
+
+    const oldRestaurantId = existingDish.restaurantId;
+    const newRestaurantId = updateData.restaurantId;
 
     try {
       if (updateData.restaurantId) {
@@ -68,7 +88,17 @@ export default {
         { new: true, runValidators: true }
       );
 
-      return updatedDish;
+      await Restaurant.updateOne(
+        { _id: oldRestaurantId },
+        { $pull: { dishes: dishId } } // Remove dishId from the dishes array
+      ).exec();
+
+      await Restaurant.updateOne(
+        { _id: newRestaurantId, dishes: { $ne: dishId } }, // Check if dishId is not already in the dishes array
+        { $addToSet: { dishes: dishId } } // Add dishId to the dishes array
+      ).exec();
+
+      return updatedDish?.populate("restaurantId");
     } catch (error) {
       console.error("Error updating dish:", error);
       throw new Error("Could not update dish");
@@ -85,12 +115,14 @@ export default {
         throw new Error(" Dish not found");
       }
 
+      // delete dish from resturant dishes[] by the dishId
+
       await Restaurant.updateMany(
         { dishes: dishId },
         { $pull: { dishes: dishId } }
       );
 
-      return deletedDish;
+      return deletedDish.populate("restaurantId");
     } catch (error) {
       console.error("Error deleting dish:", error);
       throw new Error("Could not delete dish");

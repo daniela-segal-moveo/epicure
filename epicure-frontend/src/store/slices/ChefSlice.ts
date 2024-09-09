@@ -6,11 +6,13 @@ import {
   addChef,
   updateChef,
   deleteChef,
+  getWeekChef,
 } from "../thunks/ChefThunk";
 
 interface ChefState {
   chefs: Chef[];
   selectedChef: string | null;
+  weekChef: Chef | null;
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
 }
@@ -18,6 +20,7 @@ interface ChefState {
 const initialState: ChefState = {
   chefs: [],
   selectedChef: null,
+  weekChef: null,
   status: "idle",
   error: null,
 };
@@ -54,8 +57,16 @@ const chefSlice = createSlice({
         state.status = "loading";
       })
       .addCase(addChef.fulfilled, (state, action: any) => {
-        state.chefs.push(action.payload);
-        state.status = "succeeded";
+        const newChef = action.payload as Chef;
+        // Ensure newChef has the correct structure
+        if (newChef && newChef._id) {
+          // Replace the entire array with the updated list
+          state.chefs = [...state.chefs, newChef];
+          state.status = 'succeeded';
+        } else {
+          console.error('Invalid chef data:', newChef);
+          state.status = 'failed';
+        }
       })
       .addCase(addChef.rejected, (state, action) => {
         state.status = "failed";
@@ -66,7 +77,7 @@ const chefSlice = createSlice({
       })
       .addCase(updateChef.fulfilled, (state, action: any) => {
         const index = state.chefs.findIndex(
-          (chef) => chef.id === action.payload.id
+          (chef) => chef._id === action.payload._id
         );
         if (index !== -1) {
           state.chefs[index] = action.payload;
@@ -82,7 +93,7 @@ const chefSlice = createSlice({
       })
       .addCase(deleteChef.fulfilled, (state, action: any) => {
         const index = state.chefs.findIndex(
-          (chef) => chef.id === action.payload.id
+          (chef) => chef._id === action.payload._id
         );
         if (index !== -1) {
           state.chefs.splice(index, 1);
@@ -91,7 +102,17 @@ const chefSlice = createSlice({
       })
       .addCase(deleteChef.rejected, (state) => {
         state.status = "failed";
-      });
+      }).addCase(getWeekChef.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(getWeekChef.fulfilled, (state, action: any) => {
+        state.weekChef = action.payload;
+        state.status = "succeeded";
+      })
+      .addCase(getWeekChef.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message || "Unknown error";
+      })
   },
 });
 

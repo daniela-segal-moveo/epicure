@@ -1,16 +1,18 @@
 import express from 'express';
-import { getAllChefs, getChefById, addChef, updateChef, deleteChef } from '../controllers/Chefs.controller';
+import { getAllChefs, getChefById, addChef, updateChef, deleteChef, getWeekChef } from '../controllers/Chefs.controller';
 
 const router = express.Router();
 
 router.get('/', getAllChefs);
 
-router.get('/getChef/:id', getChefById)
+router.get('/get/:id', getChefById)
 
-router.post('/addChef', addChef);
+router.post('/add', addChef);
 
-router.put('/updateChef/:id', updateChef);
+router.put('/update/:id', updateChef);
 
-router.delete('/deleteChef/:id', deleteChef);
+router.delete('/delete/:id', deleteChef);
+
+router.get('/weekChef', getWeekChef);
 
 export default router;

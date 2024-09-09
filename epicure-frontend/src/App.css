@@ -1,7 +1,7 @@
-/* @font-face {
-  font-family: "admin-login-font";
-  src: url("../src/asserts/fonts/Pigiarniq_Bold.ttf");
-} */
+@font-face {
+  font-family: "admin-font";
+  src: url("../src/assets/fonts/LibreFranklin-Bold.ttf");
+}
 
 html{
   overflow-x: hidden;

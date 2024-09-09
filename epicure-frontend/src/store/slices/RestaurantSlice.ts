@@ -6,10 +6,12 @@ import {
   addRestaurant,
   updateRestaurant,
   deleteRestaurant,
+  getPopularRestaurants,
 } from "../thunks/RestaurantThunk";
 
 interface RestaurantState {
-    restaurants: Restaurant[];
+  restaurants: Restaurant[];
+  popularRestaurants: Restaurant[];
   selectedRestaurant: string | null;
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
@@ -17,6 +19,7 @@ interface RestaurantState {
 
 const initialState: RestaurantState = {
   restaurants: [],
+  popularRestaurants: [],
   selectedRestaurant: null,
   status: "idle",
   error: null,
@@ -50,11 +53,31 @@ const restaurantSlice = createSlice({
         state.status = "failed";
         state.error = action.error.message || "Unknown error";
       })
+      .addCase(getPopularRestaurants.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(getPopularRestaurants.fulfilled, (state, action: any) => {
+        state.popularRestaurants = action.payload;
+        state.status = "succeeded";
+      })
+      .addCase(getPopularRestaurants.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message || "Unknown error";
+      })
       .addCase(addRestaurant.pending, (state) => {
         state.status = "loading";
       })
       .addCase(addRestaurant.fulfilled, (state, action: any) => {
-        state.restaurants.push(action.payload);
+        const newRestaurant = action.payload as Restaurant;
+        // Ensure newChef has the correct structure
+        if (newRestaurant && newRestaurant._id) {
+          // Replace the entire array with the updated list
+          state.restaurants = [...state.restaurants, newRestaurant];
+          state.status = 'succeeded';
+        } else {
+          console.error('Invalid chef data:', newRestaurant);
+          state.status = 'failed';
+        }
         state.status = "succeeded";
       })
       .addCase(addRestaurant.rejected, (state, action) => {
@@ -66,7 +89,7 @@ const restaurantSlice = createSlice({
       })
       .addCase(updateRestaurant.fulfilled, (state, action: any) => {
         const index = state.restaurants.findIndex(
-          (restaurant) => restaurant.id === action.payload.id
+          (restaurant) => restaurant._id === action.payload._id
         );
         if (index !== -1) {
           state.restaurants[index] = action.payload;
@@ -82,7 +105,7 @@ const restaurantSlice = createSlice({
       })
       .addCase(deleteRestaurant.fulfilled, (state, action: any) => {
         const index = state.restaurants.findIndex(
-          (restaurant) => restaurant.id === action.payload.id
+          (restaurant) => restaurant._id === action.payload._id
         );
         if (index !== -1) {
           state.restaurants.splice(index, 1);
