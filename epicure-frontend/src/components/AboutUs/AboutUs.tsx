@@ -11,10 +11,10 @@ import {
   StyledSpacer,
 } from "./AboutUs.styles";
 
-import googlePlayImg from "../../../public/assets/images/Google.svg";
-import appStoreImg from "../../../public/assets/images/AppStore.svg";
+import googlePlayImg from "/assets/images/Google.svg";
+import appStoreImg from "/assets/images/AppStore.svg";
 
-import LogoImg from "../../../public/assets/images/epicureLogo.png";
+import LogoImg from "/assets/images/epicureLogo.png";
 
 export const AboutUs = () => {
   return (

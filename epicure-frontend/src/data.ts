@@ -1,4 +1,4 @@
-import Hero from "../public/assets/images/hero-picture 1.svg";
+import Hero from "/assets/images/hero-picture 1.svg";
 
 export const epicureData = {
   hero: {
