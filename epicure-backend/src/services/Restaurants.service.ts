@@ -54,8 +54,6 @@ export default {
         .populate("chef")
         .populate("dishes");
 
-      console.log(restaurantData.chef)
-
       await Chef.updateOne(
         { _id: restaurantData.chef, restaurants: { $ne: populatedRestaurant?._id } }, 
         { $addToSet: { restaurants: populatedRestaurant?._id } } 
@@ -128,8 +126,6 @@ export default {
       if (!deletedRestaurant) {
         throw new Error("Restaurant not found");
       }
-
-      console.log(restaurantId)
 
       await Chef.updateMany(
         { restaurants: restaurantId },

@@ -7,6 +7,7 @@ import {
   updateDish,
   deleteDish,
 } from "../controllers/Dishes.contorller";
+import authenticateToken from "../authMiddleware"
 
 const router = express.Router();
 
@@ -14,12 +15,12 @@ router.get("/", getAllDishes);
 
 router.get("/get/:id", getDishById);
 
-router.post("/add", addDish);
+router.post("/add",authenticateToken, addDish);
 
-router.put("/update/:id", updateDish);
+router.put("/update/:id",authenticateToken, updateDish);
 
-router.delete("/delete/:id", deleteDish);
+router.delete("/delete/:id",authenticateToken, deleteDish);
 
-router.get("/signature", getSignatureDishes);
+router.get("/signature",authenticateToken, getSignatureDishes);
 
 export default router;

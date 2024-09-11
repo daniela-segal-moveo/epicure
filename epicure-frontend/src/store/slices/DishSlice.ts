@@ -35,7 +35,6 @@ const dishSlice = createSlice({
         state.status = "loading";
       })
       .addCase(getAllDishes.fulfilled, (state, action: any) => {
-        console.log(action.payload)
         state.dishes = action.payload;
         state.status = "succeeded";
       })

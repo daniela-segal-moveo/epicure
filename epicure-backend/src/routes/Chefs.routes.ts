@@ -1,18 +1,19 @@
 import express from 'express';
+import authenticateToken from "../authMiddleware"
 import { getAllChefs, getChefById, addChef, updateChef, deleteChef, getWeekChef } from '../controllers/Chefs.controller';
 
 const router = express.Router();
 
 router.get('/', getAllChefs);
 
-router.get('/get/:id', getChefById)
+router.get('/get/:id',getChefById)
 
-router.post('/add', addChef);
+router.post('/add',authenticateToken, addChef);
 
-router.put('/update/:id', updateChef);
+router.put('/update/:id',authenticateToken, updateChef);
 
-router.delete('/delete/:id', deleteChef);
+router.delete('/delete/:id',authenticateToken, deleteChef);
 
-router.get('/weekChef', getWeekChef);
+router.get('/weekChef',authenticateToken, getWeekChef);
 
 export default router;

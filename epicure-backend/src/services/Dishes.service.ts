@@ -6,7 +6,6 @@ export default {
   async getAll() {
     try {
       const dishes = await Dish.find().populate("restaurantId");
-      console.log(dishes);
       return dishes;
     } catch {
       console.log("error fetching data");
@@ -40,7 +39,6 @@ export default {
   },
 
   async addDish(dishData: IDish) {
-    console.log(dishData);
     try {
       const newDish = new Dish(dishData);
       const savedDish: IDish = await newDish.save();
@@ -66,7 +64,6 @@ export default {
 
   async updateDish(dishId: string, updateData: IDish) {
     dishId = dishId.trim();
-    console.log(updateData);
 
     const existingDish = await Dish.findById(dishId).exec();
     if (!existingDish) throw new Error("Dish not found");
