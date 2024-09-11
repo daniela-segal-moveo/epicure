@@ -14,6 +14,6 @@ router.put('/update/:id',authenticateToken, updateChef);
 
 router.delete('/delete/:id',authenticateToken, deleteChef);
 
-router.get('/weekChef',authenticateToken, getWeekChef);
+router.get('/weekChef', getWeekChef);
 
 export default router;

@@ -21,6 +21,6 @@ router.put("/update/:id",authenticateToken, updateDish);
 
 router.delete("/delete/:id",authenticateToken, deleteDish);
 
-router.get("/signature",authenticateToken, getSignatureDishes);
+router.get("/signature", getSignatureDishes);
 
 export default router;
