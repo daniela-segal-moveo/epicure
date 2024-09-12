@@ -34,7 +34,6 @@ export const getRestaurantById = async (req: Request, res: Response) => {
 };
 export const addRestaurants = async (req: Request, res: Response) => {
   const restaurant: IRestaurant = req.body;
-
   try {
     const newRestaurant = await  RestaurantsService.addRestaurant(restaurant);
     res.status(201).json(newRestaurant);

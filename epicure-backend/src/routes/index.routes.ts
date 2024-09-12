@@ -3,6 +3,7 @@ import DishesRouter from "./Dishes.routes";
 import ChefsRouter from "./Chefs.routes";
 import RestaurantsRouter from "./Restaurants.routes";
 import upload from "../multer-config";
+import UserRouter from "./Users.routes"
 import { S3 } from "aws-sdk";
 
 const s3 = new S3();
@@ -14,6 +15,7 @@ const apiRouter = express.Router({
 apiRouter.use("/dishes", DishesRouter);
 apiRouter.use("/chefs", ChefsRouter);
 apiRouter.use("/restaurants", RestaurantsRouter);
+apiRouter.use("/user",UserRouter)
 
 apiRouter.post(
   "/upload",
