@@ -13,6 +13,7 @@ const httpServer = createServer(app);
 
 const MONGO_URI = process.env.ATLAS_MONGO_URI || "";
 const PORT = process.env.PORT || 3001;
+const BASE_URL = process.env.BASE_URL || 'http://localhost:'
 
 async function initializeDatabase() {
   try {
@@ -26,7 +27,7 @@ async function initializeDatabase() {
 app.use(
   cors({
     origin: (origin, callback) => {
-      if (!origin || origin.startsWith('http://localhost:')) {
+      if (!origin || origin.startsWith(BASE_URL)) {
         callback(null, true);
       } else {
         callback(new Error('Not allowed by CORS'));
