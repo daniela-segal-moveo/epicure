@@ -6,7 +6,7 @@ export const StyledCardContainer = styled.div`
   justify-content: flex-start;
   align-items: center;
   background: #f9f4ea;
-  width: 379px;
+  width: 100%;
   min-height: 357px;
 
   @media (max-width: 900px) {
