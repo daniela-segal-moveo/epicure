@@ -5,8 +5,7 @@ import RestaurantsRouter from "./Restaurants.routes";
 import upload from "../multer-config";
 import UserRouter from "./Users.routes"
 import { S3 } from "aws-sdk";
-
-const s3 = new S3();
+import s3 from "../aws-config"
 
 const apiRouter = express.Router({
   strict: true,
@@ -31,11 +30,15 @@ apiRouter.post(
       return res.status(400).send("No file uploaded");
     }
 
+    console.log(":-)")
+
     const params = {
       Bucket: bucketName,
       Key: file.originalname,
       Body: file.buffer,
     };
+
+    console.log(params)
 
     s3.upload(params, (err: Error | null, data: S3.ManagedUpload.SendData) => {
       if (err) {
